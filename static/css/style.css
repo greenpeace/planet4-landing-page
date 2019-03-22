@@ -4,7 +4,7 @@
 :root {
   --font-lora: Lora, serif;
   --font-roboto: Roboto, sans-serif;
-  --btn-width: 270px;
+  --btn-width: 314px;
   --header-height: 552px;
 }
 
@@ -86,6 +86,7 @@ header > div {
   border: 1px solid transparent;
   cursor: pointer;
   width: var(--btn-width);
+  max-width: 85vw;
   padding: 16px;
   margin: 10px auto;
   box-shadow: 0 2px 5px rgba(0, 0, 0, .25);
@@ -155,7 +156,8 @@ i.arrow {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 278px;
+  width: 240px;
+  max-width: 72vw;
   display: inline-block;
   vertical-align: bottom;
 }
@@ -206,9 +208,15 @@ i.arrow {
   break-inside: avoid;
 }
 
+@media (min-width: 360px) {
+  .truncate {
+    width: auto;
+    max-width: 278px;
+  }
+}
+
 @media (min-width: 576px) {
   :root {
-    --btn-width: 314px;
     --header-height: 720px;
   }
 
