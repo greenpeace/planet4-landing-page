@@ -63,8 +63,9 @@ header > div {
   font-family: var(--font-roboto);
   font-size: 1.4rem;
   font-weight: bold;
-  margin: 20px 5px 40px 5px;
+  margin: 20px 16px 40px 16px;
   text-align: center;
+  line-height: normal;
 }
 
 .cta {
@@ -228,7 +229,6 @@ i.arrow {
 
   .heading {
     font-size: 3rem;
-    line-height: normal;
   }
 
   .country-list {
@@ -246,7 +246,7 @@ i.arrow {
   }
 
   .heading {
-    margin: 30px 10px 60px 10px;
+    margin: 30px 16px 60px 16px;
     line-height: inherit;
   }
 
