@@ -123,6 +123,7 @@ i.arrow {
   position: absolute;
   z-index: 99;
   width: var(--btn-width);
+  max-width: 85vw;
   margin: -10px 0 10px 0;
 }
 
@@ -149,6 +150,7 @@ i.arrow {
   padding-left: 20px;
   margin: 0;
   width: calc(var(--btn-width) - 4px);
+  max-width: calc(85vw - 4px);
 }
 
 .dropdown-item:hover {

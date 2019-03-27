@@ -8,17 +8,13 @@ $(document).ready(function() {
     }, 1000);
   });
 
-  $('.dropdown-toggle').click(function(event) {
-    event.stopPropagation();
-    $('.dropdown').toggleClass('open');
-  });
-
-  $('.dropdown-toggle').mouseover(function() {
-    $('.dropdown').addClass('open');
-  });
-
-  $('.dropdown-toggle').mouseout(function() {
-    $('.dropdown').removeClass('open');
+  $('.dropdown-toggle').click(function() {
+    if($('.dropdown').hasClass('open')) {
+      $('.dropdown').removeClass('open');
+    } else {
+      $('.dropdown').addClass('open');
+    }
+    return false;
   });
 
   $('body').click(function() {
