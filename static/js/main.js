@@ -8,4 +8,21 @@ $(document).ready(function() {
     }, 1000);
   });
 
+  $('.dropdown-toggle').click(function(event) {
+    event.stopPropagation();
+    $('.dropdown').toggleClass('open');
+  });
+
+  $('.dropdown-toggle').mouseover(function() {
+    $('.dropdown').addClass('open');
+  });
+
+  $('.dropdown-toggle').mouseout(function() {
+    $('.dropdown').removeClass('open');
+  });
+
+  $('body').click(function() {
+    $('.dropdown').removeClass('open');
+  });
+
 });

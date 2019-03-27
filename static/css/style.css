@@ -131,11 +131,11 @@ i.arrow {
   display: inline-block;
 }
 
-.dropdown:hover .dropdown-group {
+.dropdown.open .dropdown-group {
   display: block;
 }
 
-.dropdown:hover .arrow {
+.dropdown.open .arrow {
   transform: rotate(-135deg);
   vertical-align: 0;
 }
