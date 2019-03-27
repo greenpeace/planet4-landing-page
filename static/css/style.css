@@ -247,11 +247,6 @@ i.arrow {
     flex-direction: row;
   }
 
-  .heading {
-    margin: 30px 16px 60px 16px;
-    line-height: inherit;
-  }
-
   .btn {
     margin: 0 12px;
   }
@@ -266,6 +261,11 @@ i.arrow {
 }
 
 @media (min-width: 992px) {
+  .heading {
+    line-height: inherit;
+    margin: 30px 16px 60px 16px;
+  }
+
   .country-list {
     max-width: 960px;
   }
