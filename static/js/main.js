@@ -1,13 +1,15 @@
 $(document).ready(function() {
   'use strict';
 
-  $('#country').click(function(event) {
-    event.preventDefault();
+  // Country selection CTA
+  $('#country').click(function() {
     $('html, body').animate({
       scrollTop: $('#country-list').offset().top
     }, 1000);
+    return false;
   });
 
+  // Language selection button dropdown
   $('.dropdown-toggle').click(function() {
     if($('.dropdown').hasClass('open')) {
       $('.dropdown').removeClass('open');
@@ -16,7 +18,6 @@ $(document).ready(function() {
     }
     return false;
   });
-
   $('body').click(function() {
     $('.dropdown').removeClass('open');
   });

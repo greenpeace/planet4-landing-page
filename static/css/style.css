@@ -280,3 +280,9 @@ i.arrow {
     max-width: 1140px;
   }
 }
+
+@media (min-height: 2000px) {
+  .hidden-tall {
+    display: none;
+  }
+}
