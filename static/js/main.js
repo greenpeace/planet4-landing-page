@@ -26,7 +26,7 @@ $(document).ready(function() {
   });
 
   // Render countries list
-  $.ajax('/static/countries.json')
+  $.ajax('static/countries.json')
     .then(
       function success(response) {
         let international_html = ``;
@@ -58,7 +58,7 @@ $(document).ready(function() {
       .then(
         function success(response) {
           const countryCode = response.countryCode;
-          $.ajax('/static/countries.json')
+          $.ajax('static/countries.json')
             .then(
               function success(response) {
                 $.each(response, function (letter, countries) {
