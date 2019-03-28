@@ -43,12 +43,10 @@
 
     <div class="cta">
       <div class="dropdown">
-        <a class="btn btn-primary dropdown-toggle" href="#" data-toggle="" aria-expanded="false">
-          <span class="truncate">Go to Greenpeace Belgium</span> <i class="arrow arrow-down"></i>
+        <a class="btn btn-primary" id="selection" href="https://www.greenpeace.org/international/">
+          <span class="truncate">Go to Greenpeace <span id="country_name">International</span></span> <i class="arrow arrow-down"></i>
         </a>
         <div class="dropdown-group">
-          <a class="btn btn-secondary dropdown-item" href="https://www.greenpeace.org/belgium/fr/">French</a>
-          <a class="btn btn-secondary dropdown-item" href="https://www.greenpeace.org/belgium/en/">English</a>
         </div>
       </div>
       <span class="hidden-tall">or</span>
@@ -56,171 +54,7 @@
     </div>
   </header>
 
-  <div id="country-list" class="country-list">
-
-    <h2>All countries</h2>
-
-    <a href="http://www.greenpeace.org/international">International | English</a>
-
-    <ul>
-      <li>
-        <span class="country-group-letter">A</span>
-
-        <ul>
-          <li><a href="https://www.greenpeace.org/africa/en/">Africa | English</a></li>
-          <li><a href="https://www.greenpeace.org/africa/fr/">Africa | Français</a></li>
-          <li><a href="https://www.greenpeace.org/argentina/">Argentina | Español</a></li>
-          <li><a href="https://www.greenpeace.org/australia/">Australia | English</a></li>
-          <li><a href="https://www.greenpeace.org/austria/">Austria | Deutsch</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">B</span>
-        <ul>
-          <li><a href="https://www.greenpeace.org/belgium/fr/">Belgium | Français</a></li>
-          <li><a href="https://www.greenpeace.org/belgium/nl/">Belgium | Nederlands</a></li>
-          <li><a href="https://www.greenpeace.org/brasil/">Brazil | Português</a></li>
-          <li><a href="https://www.greenpeace.org/bulgaria/">Bulgaria | български</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">C</span>
-        <ul>
-          <li><a href="http://www.greenpeace.org/canada/en/">Canada | English</a></li>
-          <li><a href="http://www.greenpeace.org/canada/fr/">Canada | Français</a></li>
-          <li><a href="http://www.greenpeace.org/chile/">Chile | Español</a></li>
-          <li><a href="http://www.greenpeace.org.cn">China Mainland | 简体中文</a></li>
-          <li><a href="http://www.greenpeace.org/colombia/">Colombia | Español</a></li>
-          <li><a href="http://www.greenpeace.org/croatia">Croatia | Hrvatski</a></li>
-          <li><a href="http://www.greenpeace.cz">Czech Republic | Česky</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">D</span>
-        <ul>
-          <li><a href="http://www.greenpeace.org/denmark/da/">Denmark | Dansk</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">E</span>
-        <ul>
-          <li><a href="https://www.greenpeace.org/eastasia/">East Asia | English</a></li>
-          <li><a href="https://www.greenpeace.org/eu-unit">European Union | English</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">F</span>
-        <ul>
-          <li><a href="https://www.greenpeace.org/finland">Finland | Suomea</a></li>
-          <li><a href="https://www.greenpeace.org/france">France | Français</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">G</span>
-        <ul>
-          <li><a href="https://www.greenpeace.de">Germany | Deutsch</a></li>
-          <li><a href="https://www.greenpeace.org/greece">Greece | Ελληνικά</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">H</span>
-        <ul>
-          <li><a href="https://www.greenpeace.org/hk/">Hong Kong | 繁體中文</a></li>
-          <li><a href="http://www.greenpeace.org/hungary/">Hungary | Magyar</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">I</span>
-        <ul>
-          <li><a href="https://www.greenpeace.org/india/en/">India | English</a></li>
-          <li><a href="https://www.greenpeace.org/india/hi/">India | Hindi</a></li>
-          <li><a href="https://www.greenpeace.org/seasia/id/">Indonesia | Indonesia</a></li>
-          <li><a href="https://www.greenpeace.org/israel/">Israel | עברית</a></li>
-          <li><a href="https://www.greenpeace.org/italy/">Italy | Italiano</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">J</span>
-        <ul>
-          <li><a href="https://www.greenpeace.org/japan/">Japan | 日本語</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">K</span>
-        <ul>
-          <li><a href="https://www.greenpeace.org/korea/">Korea | 한국어</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">L</span>
-        <ul>
-          <li><a href="http://www.greenpeace.org/luxembourg/de/">Luxembourg | Deutsch</a></li>
-          <li><a href="http://www.greenpeace.org/luxembourg/fr/">Luxembourg | Français</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">M</span>
-        <ul>
-          <li><a href="https://www.greenpeace.org/seasia/about-us/Malaysia/">Malaysia | English</a></li>
-          <li><a href="https://www.greenpeace.org/mexico/">Mexico | Español</a></li>
-          <li><a href="https://www.greenpeace.org/mena/ar/">Middle East and North Africa | العربية</a></li>
-          <li><a href="https://www.greenpeace.org/mena/en/">Middle East and North Africa | English</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">N</span>
-        <ul>
-          <li><a href="http://www.greenpeace.nl">Netherlands | Nederlands</a></li>
-          <li><a href="https://www.greenpeace.org/new-zealand">New Zealand | English</a></li>
-          <li><a href="http://www.greenpeace.org/norway/no/">Norway | Norsk</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">P</span>
-        <ul>
-          <li><a href="https://www.greenpeace.org/seasia/ph/">Philippines | English</a></li>
-          <li><a href="https://www.greenpeace.pl">Poland | Polska</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">R</span>
-        <ul>
-          <li><a href="http://www.greenpeace.org/romania/ro/">Romania | Română</a></li>
-          <li><a href="https://www.greenpeace.org/russia/ru/">Russia | Русский</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">S</span>
-        <ul>
-          <li><a href="http://www.greenpeace.org/slovakia/sk/">Slovakia | Slovensko</a></li>
-          <li><a href="https://www.greenpeace.org/slovenia/">Slovenia | Slovenjia</a></li>
-          <li><a href="https://www.greenpeace.org/seasia/">Southeast Asia | English</a></li>
-          <li><a href="https://es.greenpeace.org/es/">Spain | Español</a></li>
-          <li><a href="https://es.greenpeace.org/ca/">Spain | Català</a></li>
-          <li><a href="https://es.greenpeace.org/eu/">Spain | Euskara</a></li>
-          <li><a href="https://es.greenpeace.org/gl/">Spain | Galego</a></li>
-          <li><a href="http://www.greenpeace.org/sweden/se/">Sweden | Svenska</a></li>
-          <li><a href="https://www.greenpeace.ch/">Switzerland | Deutsch</a></li>
-          <li><a href="https://www.greenpeace.ch/fr/">Switzerland | Français</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">T</span>
-        <ul>
-          <li><a href="https://www.greenpeace.org/taiwan/">Taiwan | 正體中文</a></li>
-          <li><a href="https://www.greenpeace.org/seasia/th/">Thailand | ไทย</a></li>
-          <li><a href="https://www.greenpeace.org/turkey/">Turkey | Türk</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="country-group-letter">U</span>
-        <ul>
-          <li><a href="https://www.greenpeace.org.uk">United Kingdom | English</a></li>
-          <li><a href="https://www.greenpeace.org/usa/">USA | English</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+  <div id="country-list" class="country-list"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="static/js/main.js"></script>

@@ -106,9 +106,9 @@ header > div {
 }
 
 i.arrow {
+  display: none;
   border: solid white;
   border-width: 0 3px 3px 0;
-  display: inline-block;
   padding: 3px;
   vertical-align: .2em;
   margin-left: 12px;
@@ -147,6 +147,7 @@ i.arrow {
   color: #3d3d3d;
   font-weight: 400;
   text-align: left;
+  text-transform: initial;
   padding-left: 20px;
   margin: 0;
   width: calc(var(--btn-width) - 4px);
