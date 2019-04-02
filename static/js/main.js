@@ -81,6 +81,12 @@ $(document).ready(function() {
                 });
               }
             );
+          $('#loading').hide();
+          $('.cta').addClass('open');
+        },
+        function fail() {
+          $('#loading').hide();
+          $('.cta').addClass('open');
         }
       );
   }

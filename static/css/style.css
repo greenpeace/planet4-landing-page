@@ -73,11 +73,15 @@ header > div {
   font-family: var(--font-roboto);
   font-size: 0.875rem;
   font-weight: 700;
-  display: flex;
+  display: none;
   flex-direction: column;
   text-align: center;
   align-items: center;
   letter-spacing: 1px;
+}
+
+.cta.open {
+  display: flex;
 }
 
 .btn {
@@ -212,6 +216,30 @@ i.arrow {
 .country-list li li {
   position: relative;
   break-inside: avoid;
+}
+
+@keyframes three-quarters {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.three-quarters:not(:required) {
+  animation: three-quarters 1250ms infinite linear;
+  border: 8px solid #ecf1f3;
+  border-right-color: transparent;
+  border-radius: 16px;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
 }
 
 @media (min-width: 360px) {
