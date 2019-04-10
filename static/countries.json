@@ -27,7 +27,8 @@
           "name": "Español",
           "url": "https://www.greenpeace.org/argentina/"
         }
-      ]
+      ],
+      "cta": "Ir a Greenpeace Argentina"
     },
     {
       "name": "Australia",
@@ -215,7 +216,8 @@
           "name": "Deutsch",
           "url": "https://www.greenpeace.de"
         }
-      ]
+      ],
+      "cta": "Gehen Sie zu Greenpeace Deutschland"
     },
     {
       "name": "Greece",
@@ -225,7 +227,8 @@
           "name": "Ελληνικά",
           "url": "https://www.greenpeace.org/greece/"
         }
-      ]
+      ],
+      "cta": "ΜΕΤΑΒΑΣΗ ΣΤΗ GREENPEACE ΕΛΛΑΔΟΣ"
     }
   ],
   "H": [
