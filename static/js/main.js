@@ -54,10 +54,10 @@ $(document).ready(function() {
 
   // IP Geolocation
   function ipLookUp () {
-    $.ajax('https://ipinfo.io/json')
+    $.ajax('/test.html')
       .then(
         function success(response) {
-          const countryCode = response.country;
+          const countryCode = response.split(' ')[1];
           $.ajax('static/countries.json')
             .then(
               function success(response) {
