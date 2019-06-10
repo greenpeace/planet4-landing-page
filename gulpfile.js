@@ -4,7 +4,7 @@ const gulp = require('gulp');
 const stylelint = require('gulp-stylelint');
 const eslint = require('gulp-eslint');
 const backstop = require('backstopjs');
-const webserver = require('gulp-webserver');
+const connect = require('gulp-connect');
 
 const path_js = 'static/js/*.js';
 const path_css = 'static/css/*.css';
@@ -39,15 +39,11 @@ function backstop_test(done) {
 }
 
 function serve(done) {
-  gulp.src('.')
-    .pipe(webserver({
-      livereload: true,
-      directoryListing: false,
-      open: false,
-      host: 'localhost',
-      port: '8080',
-      path: '/'
-    }));
+  connect.server({
+    root: './',
+    livereload: true,
+    port: '9000'
+  });
   done();
 }
 
