@@ -8,10 +8,16 @@
     "backstopjs": "^4.0.6",
     "eslint": "^5.16.0",
     "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.7.0",
     "gulp-eslint": "5.0.0",
-    "gulp-livereload": "^4.0.1",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-stylelint": "^9.0.0",
+    "gulp-uglify-es": "^1.0.4",
     "stylelint": "^10.0.1"
   }
 }

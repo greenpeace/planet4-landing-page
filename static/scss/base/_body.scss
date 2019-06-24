@@ -1,0 +1,23 @@
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+}
+
+body {
+  color: $dark-shade-black;
+  font-family: $lora;
+  font-size: 16px;
+  line-height: 20px;
+  position: relative;
+  overflow-y: hidden;
+  background-color: #ecf1f3;
+}
+
+:root {
+  --header-height: 552px;
+
+  @media (min-width: 576px) {
+    --header-height: 720px;
+  }
+}

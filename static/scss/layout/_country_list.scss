@@ -1,0 +1,76 @@
+.country-list {
+  line-height: 1.5;
+  width: 100%;
+  color: #3d3d3d;
+  font-family: $roboto;
+  margin: 60px auto;
+  padding: 0 15px;
+
+  @include small-and-up {
+    max-width: 540px;
+  }
+
+  @include medium-and-up {
+    max-width: 720px;
+  }
+
+  @include large-and-up {
+    max-width: 960px;
+  }
+
+  @include x-large-and-up {
+    max-width: 1140px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  a {
+    color: #3d3d3d;
+    text-decoration: underline;
+
+    &:hover {
+      font-weight: 700;
+    }
+  }
+
+  > ul {
+    margin-top: 1.5em;
+    padding: 0 0 2em;
+
+    @include medium-and-up {
+      column-count: 2;
+    }
+
+    @include large-and-up {
+      column-count: 3;
+    }
+  }
+
+  li {
+    position: relative;
+    list-style: none;
+    padding-left: 2em;
+    break-inside: avoid;
+
+    ul {
+      break-inside: avoid;
+      padding: 0;
+      margin: 0 1em 1.2em 0;
+    }
+
+    li {
+      position: relative;
+      break-inside: avoid;
+    }
+  }
+
+  .country-group-letter {
+    line-height: 1.5;
+    font-weight: bold;
+    color: grey;
+  }
+}
