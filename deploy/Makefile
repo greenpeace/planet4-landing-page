@@ -44,10 +44,9 @@ REVISION_TAG = $(shell git rev-parse --short HEAD)
 
 
 test:
-	yamllint .circleci/config.yml
-	yamllint values.yaml
-	yamllint env/dev/values.yaml
-	yamllint env/prod/values.yaml
+	yamllint values.yml
+	yamllint env/dev/values.yml
+	yamllint env/prod/values.yml
 
 pull:
 	docker pull gcr.io/planet-4-151612/openresty:latest
