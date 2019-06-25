@@ -84,8 +84,8 @@ dev: test dev-config
 	helm upgrade --install --force --recreate-pods --wait $(RELEASE_NAME) $(CHART_NAME) \
 		--namespace=$(NAMESPACE) \
 		--set image.tag=$(BUILD_NUM) \
-		--values values.yaml \
-		--values env/dev/values.yaml
+		--values values.yml \
+		--values env/dev/values.yml
 
 prod: test prod-config
 	helm init --client-only
@@ -94,5 +94,5 @@ prod: test prod-config
 	helm upgrade --install --force --recreate-pods --wait $(RELEASE_NAME) $(CHART_NAME) \
 		--namespace=$(NAMESPACE) \
 		--set image.tag=$(BUILD_NUM) \
-		--values values.yaml \
-		--values env/prod/values.yaml
+		--values values.yml \
+		--values env/prod/values.yml
