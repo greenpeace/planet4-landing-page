@@ -6,7 +6,7 @@ SHELL := /bin/bash
 
 APP_SOURCE := /home/circleci/app/deploy/docker/source
 
-NAMESPACE ?= default
+NAMESPACE ?= landing
 
 DEV_CLUSTER ?= p4-development
 DEV_PROJECT ?= planet-4-151612
