@@ -9,9 +9,6 @@ $(document).ready(function() {
         $.each(countries, function (index, country) {
           if (countryCode == country.code) {
             $('#country_name').html(country.name);
-            if (country.cta) {
-              $('#cta_country').html(country.cta);
-            }
             if (country.lang.length == 1) {
               $('#selection').attr('href', country.lang[0].url);
             } else {

@@ -1,8 +1,10 @@
 $(document).ready(function() {
   'use strict';
 
+  const api = 'static/dist/countries.json';
+
   // Render countries list
-  $.ajax('static/countries.json').then(
+  $.ajax(api).then(
     function success(response) {
       let international_html = ``;
       let sublist_html = ``;

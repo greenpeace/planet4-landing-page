@@ -5,7 +5,9 @@ const cleancss = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const connect = require('gulp-connect');
 const eslint = require('gulp-eslint');
+const fs = require('fs');
 const gulp = require('gulp');
+const request = require('request');
 const scss = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const stylelint = require('gulp-stylelint');
@@ -15,6 +17,8 @@ const dest = './static/dist';
 const path_js = 'static/js/*.js';
 const style_scss = 'static/scss/**/*.scss';
 const style = 'static/scss/style.scss';
+
+const api = 'https://www.greenpeace.org/international/wp-content/themes/planet4-master-theme/templates/countries.json';
 
 function lint_css() {
   return gulp.src(style_scss)
@@ -52,6 +56,11 @@ function uglify() {
     .pipe(connect.reload());
 }
 
+function countries() {
+  return request(api)
+    .pipe(fs.createWriteStream('static/dist/countries.json'));
+}
+
 function watch(done) {
   gulp.watch(style_scss, gulp.series(lint_css, style_sass));
   gulp.watch(path_js, gulp.series(lint_js, uglify));
@@ -80,5 +89,5 @@ function serve(done) {
 exports.backstop_reference = backstop_reference;
 exports.backstop_test = backstop_test;
 exports.test = gulp.parallel(lint_css, lint_js);
-exports.build = gulp.series(lint_css, lint_js, style_sass, uglify);
+exports.build = gulp.series(lint_css, lint_js, style_sass, uglify, countries);
 exports.default = gulp.series(watch, serve);
