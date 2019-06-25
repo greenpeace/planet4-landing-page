@@ -57,6 +57,8 @@ checkout:
 docker/public:
 	cd docker/source ; npm install
 	sudo npm install -g gulp-cli
+	cd docker/source ; git submodule init
+	cd docker/source ; git submodule update
 	cd docker/source ; gulp build
 	mv docker/source docker/public
 
