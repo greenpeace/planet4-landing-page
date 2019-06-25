@@ -1,4 +1,4 @@
-RELEASE_NAME ?= p4-landing-page
+RELEASE_NAME ?= p4-landing
 
 CHART_NAME ?= p4/static
 
