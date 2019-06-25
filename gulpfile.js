@@ -6,8 +6,6 @@ const concat = require('gulp-concat');
 const connect = require('gulp-connect');
 const eslint = require('gulp-eslint');
 const gulp = require('gulp');
-const notify = require('gulp-notify');
-const plumber = require('gulp-plumber');
 const scss = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const stylelint = require('gulp-stylelint');
@@ -18,16 +16,8 @@ const path_js = 'static/js/*.js';
 const style_scss = 'static/scss/**/*.scss';
 const style = 'static/scss/style.scss';
 
-let error_handler = {
-  errorHandler: notify.onError({
-    title: 'Gulp',
-    message: 'Error: <%= error.message %>'
-  })
-};
-
 function lint_css() {
   return gulp.src(style_scss)
-    .pipe(plumber(error_handler))
     .pipe(stylelint({
       reporters: [{ formatter: 'string', console: true}]
     }))
@@ -36,7 +26,6 @@ function lint_css() {
 
 function lint_js() {
   return gulp.src(path_js)
-    .pipe(plumber(error_handler))
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError())
@@ -45,7 +34,6 @@ function lint_js() {
 
 function style_sass() {
   return gulp.src(style)
-    .pipe(plumber(error_handler))
     .pipe(sourcemaps.init())
     .pipe(scss().on('error', scss.logError))
     .pipe(cleancss({rebase: false}))
@@ -56,7 +44,6 @@ function style_sass() {
 
 function uglify() {
   return gulp.src(path_js)
-    .pipe(plumber(error_handler))
     .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
     .pipe(js())

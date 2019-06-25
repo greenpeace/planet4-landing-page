@@ -62,6 +62,8 @@ docker/public:
 	cd docker/source ; gulp build
 	mv docker/source docker/public
 
+lint: test docker/public
+
 build: test pull docker/public echo-build
 	docker build --tag=greenpeaceinternational/p4-landing-page:$(BUILD_NUM) docker
 

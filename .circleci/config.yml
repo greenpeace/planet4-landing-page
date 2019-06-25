@@ -7,6 +7,17 @@ defaults: &defaults
 version: 2
 
 jobs:
+  lint:
+    <<: *defaults
+    environment:
+      GOOGLE_PROJECT_ID: planet4-production
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - run: make -C deploy checkout
+      - run: make -C deploy lint
+
   deploy-dev:
     <<: *defaults
     environment:
@@ -39,6 +50,15 @@ jobs:
 
 workflows:
   version: 2
+  branch:
+    jobs:
+      - lint:
+          context: org-global
+          filters:
+            branches:
+              ignore: master
+            tags:
+              ignore: /.*/
   dev:
     jobs:
       - deploy-dev:
