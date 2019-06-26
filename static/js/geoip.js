@@ -1,9 +1,11 @@
+/* global api */
+
 $(document).ready(function() {
   'use strict';
 
   // IP Geolocation
   const countryCode = $('body').data('code');
-  $.ajax('static/countries.json').then(
+  $.ajax(api).then(
     function success(response) {
       $.each(response, function (letter, countries) {
         $.each(countries, function (index, country) {

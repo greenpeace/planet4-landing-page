@@ -1,7 +1,7 @@
+/* global api */
+
 $(document).ready(function() {
   'use strict';
-
-  const api = 'static/dist/countries.json';
 
   // Render countries list
   $.ajax(api).then(
