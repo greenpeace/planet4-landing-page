@@ -29,6 +29,7 @@ jobs:
       - run: activate-gcloud-account.sh
       - run: docker-login.sh
       - run: make -C deploy checkout
+      - run: make -C deploy commit
       - run: make -C deploy build
       - run: make -C deploy docker-push
       - run: make -C deploy dev
@@ -44,6 +45,7 @@ jobs:
       - run: activate-gcloud-account.sh
       - run: docker-login.sh
       - run: make -C deploy checkout
+      - run: make -C deploy tag
       - run: make -C deploy build
       - run: make -C deploy docker-push
       - run: make -C deploy prod

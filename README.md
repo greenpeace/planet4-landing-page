@@ -12,11 +12,15 @@ Install all required packages:
 
     npm install
 
+Build the style guide:
+
+    gulp build
+
 Run the local webserver:
 
     gulp
 
-Browse to [localhost:8080](http://localhost:8080).
+Browse to [localhost:8080](http://localhost:9000).
 
 ## Test
 
@@ -33,6 +37,29 @@ At any time you can create test screenshots:
     gulp backstop_test
 
 Once this is finished a report will be launched in your browser in order to inspect the visual diff.
+
+## Deployment
+
+The build and deployment is happening automatically whenever:
+
+- There are commits to the master branch.
+- There are new [tags](https://github.com/greenpeace/planet4-landing-page/tags) created.
+
+The above changes trigger (via the circleCI API) a rebuild of the develop and master related workflows of the current repository.
+
+These in turn do the following:
+
+- Checkout the relevant code of the landing-page (either the latest code of the master theme, or the latest tag).
+- Create a docker image with the above code in the repository called "public".
+- Push this docker image to the [docker hub registry](https://hub.docker.com/r/greenpeaceinternational/p4-landing-page) for the current application and tag it either `develop` or `latest`.
+- Run a helm deploy/update to create the necessary kubernetes resources so that this can be served by our kubernetes clusters.
+
+### Notes
+
+- This repository does not have its own helm chart. It utilises the helm chart [Planet4 static](https://github.com/greenpeace/planet4-helm-static) which can been created to accomodate all static applications.
+- New commits to the master branch get deployed at the url: https://dev.landing.p4.greenpeace.org
+- New tags get deployed at the url: https://stage.landing.p4.greenpeace.org
+- If you want to confirm the version deployed you can check `/version.txt` on either of the above urls.
 
 ## Contribute
 

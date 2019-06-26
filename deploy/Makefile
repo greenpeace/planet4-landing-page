@@ -54,6 +54,12 @@ pull:
 checkout:
 	rsync -av /home/circleci/app/ $(APP_SOURCE)/ --exclude=deploy
 
+commit:
+	echo $${CIRCLE_SHA1:0:8} > $(APP_SOURCE)/version.txt
+
+tag:
+	echo ${CIRCLE_TAG} > $(APP_SOURCE)/version.txt
+
 docker/public:
 	cd docker/source ; npm install
 	sudo npm install -g gulp-cli
