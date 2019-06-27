@@ -89,5 +89,6 @@ function serve(done) {
 exports.backstop_reference = backstop_reference;
 exports.backstop_test = backstop_test;
 exports.test = gulp.parallel(lint_css, lint_js);
-exports.build = gulp.series(lint_css, lint_js, style_sass, uglify, countries);
+exports.countries = countries;
+exports.build = gulp.series(lint_css, lint_js, style_sass, uglify);
 exports.default = gulp.series(watch, serve);

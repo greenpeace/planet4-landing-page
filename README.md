@@ -12,6 +12,10 @@ Install all required packages:
 
     npm install
 
+On first run fetch the countries data:
+
+    gulp countries
+
 Build the style guide:
 
     gulp build
