@@ -19,8 +19,6 @@ const path_js = 'static/js/*.js';
 const style_scss = 'static/scss/**/*.scss';
 const style = 'static/scss/style.scss';
 
-const api = 'https://www.greenpeace.org/international/wp-content/themes/planet4-master-theme/templates/countries.json';
-
 function lint_css() {
   return gulp.src(style_scss)
     .pipe(stylelint({
@@ -61,6 +59,7 @@ function uglify() {
 }
 
 function countries() {
+  const api = fs.readFileSync('API.txt', 'utf8').trim();
   return request(api)
     .pipe(fs.createWriteStream('static/dist/countries.json'));
 }

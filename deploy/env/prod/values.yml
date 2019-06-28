@@ -1,6 +1,7 @@
 ---
 hostname: landing.p4.greenpeace.org
 environment: production
+api: https://www.greenpeace.org/international/wp-content/themes/planet4-master-theme/templates/countries.json
 ingress:
   hosts:
     - name: www.greenpeace.org
