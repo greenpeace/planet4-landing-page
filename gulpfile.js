@@ -1,5 +1,6 @@
 /* global require, exports */
 
+const babel = require('gulp-babel');
 const backstop = require('backstopjs');
 const cleancss = require('gulp-clean-css');
 const concat = require('gulp-concat');
@@ -50,6 +51,9 @@ function uglify() {
   return gulp.src(path_js)
     .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
+    .pipe(babel({
+      presets: ['@babel/env']
+    }))
     .pipe(js())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(dest))

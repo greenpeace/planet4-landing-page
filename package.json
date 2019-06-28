@@ -5,10 +5,13 @@
   "author": "Greenpeace International",
   "license": "GPLv3",
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "backstopjs": "^4.0.6",
     "eslint": "^5.16.0",
     "fs": "0.0.1-security",
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.7.0",
