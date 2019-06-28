@@ -60,6 +60,9 @@ function uglify() {
 
 function countries() {
   const api = fs.readFileSync('API.txt', 'utf8').trim();
+  if(!fs.existsSync(dest)) {
+    fs.mkdirSync(dest);
+  }
   return request(api)
     .pipe(fs.createWriteStream('static/dist/countries.json'));
 }
