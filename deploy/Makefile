@@ -63,13 +63,13 @@ tag:
 	yq -r .api /home/circleci/app/deploy/env/prod/values.yml | tr -d '\n\ ' > $(APP_SOURCE)/API.txt
 
 docker/public:
-	cd docker/source ; npm install
+	cd docker/source ; npm install --production
 	sudo npm install -g gulp-cli
 	cd docker/source ; git submodule init
 	cd docker/source ; git submodule update
 	cd docker/source ; gulp countries
 	cd docker/source ; gulp build
-	mv docker/source docker/public
+	mv docker/source/dist docker/public
 
 lint: test docker/public
 

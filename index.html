@@ -24,7 +24,7 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.greenpeace.org">
   <meta property="og:description" content="Together we can change the world">
-  <meta property="og:image" content="https://greenpeace.org/static/img/image.jpg">
+  <meta property="og:image" content="https://greenpeace.org/img/image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
   <meta property="og:site_name" content="Greenpeace">
@@ -33,15 +33,15 @@
   <meta name="twitter:site" content="Greenpeace">
   <meta name="twitter:title" content="Greenpeace">
   <meta name="twitter:description" content="Together we can change the world">
-  <meta name="twitter:image" content="https://greenpeace.org/static/img/image.jpg">
+  <meta name="twitter:image" content="https://greenpeace.org/img/image.jpg">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="shortcut icon" type="image/ico" href="favicon.ico">
 
-  <link rel='stylesheet' href='static/dist/style.css' type='text/css' media='all'>
+  <link rel='stylesheet' href='style.css' type='text/css' media='all'>
 </head>
 
-<body data-code="__P4_GEOIP_COUNTRY_CODE__">
+<body data-code="CA">
   <!-- GPI Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7SG829"
   height="0" width="0" style="display:none;visibility:hidden;"></iframe></noscript>
@@ -49,11 +49,11 @@
 
   <header>
     <div class="page-header-background">
-      <img src="static/img/image.jpg" srcset="static/img/image.jpg 1200w, static/img/image-992w.jpg 992w, static/img/image-768w.jpg 768w, static/img/image-575w.jpg 575w, static/img/image-320w.jpg 320w" class="page-header-image">
+      <img src="img/image.jpg" srcset="img/image.jpg 1200w, img/image-992w.jpg 992w, img/image-768w.jpg 768w, img/image-575w.jpg 575w, img/image-320w.jpg 320w" class="page-header-image">
     </div>
 
     <div>
-      <img src="static/img/gp-logo.svg" alt="Greenpeace" class="logo">
+      <img src="img/gp-logo.svg" alt="Greenpeace" class="logo">
     </div>
 
     <div class="heading">
@@ -64,22 +64,21 @@
       <div class="three-quarters" id="spinner-people">loading...</div>
     </div>
 
-    <div class="cta">
-      <div class="dropdown">
+    <div id="cta" class="cta">
+      <div id="dropdown" class="dropdown">
         <a class="btn btn-primary" id="selection" href="https://www.greenpeace.org/international/">
-          <span class="truncate">Go to Greenpeace <span id="country_name">International</span></span> <i class="arrow arrow-down"></i>
+          <span class="truncate">Go to Greenpeace <span id="country-name">International</span></span> <i id="arrow" class="arrow arrow-down"></i>
         </a>
-        <div class="dropdown-group">
+        <div id="dropdown-group" class="dropdown-group">
         </div>
       </div>
       <span class="hidden-tall">or</span>
-      <a class="btn btn-secondary hidden-tall" href="#" id="country">Select another country</a>
+      <a class="btn btn-secondary hidden-tall" href="#country-list" id="country">Select another country</a>
     </div>
   </header>
 
   <div id="country-list" class="country-list"></div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="static/dist/main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

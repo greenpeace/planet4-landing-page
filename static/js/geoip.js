@@ -1,37 +1,30 @@
-/* global api */
+/* global data, dropdown_toggle, byID */
+'use strict';
 
-$(document).ready(function() {
-  'use strict';
+// IP Geolocation
+const countryCode = document.querySelector('body').dataset.code;
 
-  // IP Geolocation
-  const countryCode = $('body').data('code');
-
-  $.ajax(api).then(
-    function success(response) {
-      $.each(response, function (letter, countries) {
-        $.each(countries, function (index, country) {
-          if (country.codes && country.codes.includes(countryCode)) {
-            $('#country_name').html(country.name);
-            if (country.lang.length == 1) {
-              $('#selection').attr('href', country.lang[0].url);
-            } else {
-              $('#selection .arrow').css('display', 'inline-block');
-              $('#selection').addClass('dropdown-toggle');
-              let items = ``;
-              $.each(country.lang, function(key, lang) {
-                items += `<a class="btn btn-secondary dropdown-item" href="${lang.url}">${lang.name}</a>`;
-                $('.dropdown-group').html(items);
-              });
-            }
-          }
+Object.entries(data).forEach(letter => {
+  letter[1].forEach(country => {
+    if (country.codes && country.codes.includes(countryCode)) {
+      byID('country-name').innerHTML = country.name;
+      if (country.lang.length == 1) {
+        byID('selection').setAttribute('href', country.lang[0].url);
+      } else {
+        byID('selection').setAttribute('href', '#');
+        byID('arrow').style.display = 'inline-block';
+        byID('selection').classList.add('dropdown-toggle');
+        let items = ``;
+        const lang = country.lang;
+        lang.forEach(item => {
+          items += `<a class="btn btn-secondary dropdown-item" href="${item.url}">${item.name}</a>`;
         });
-      });
-      $('#loading').hide();
-      $('.cta').addClass('open');
-    },
-    function fail() {
-      $('#loading').hide();
-      $('.cta').addClass('open');
+        byID('dropdown-group').innerHTML = items;
+        byID('selection').addEventListener('click', dropdown_toggle);
+      }
     }
-  );
+  });
 });
+
+byID('loading').style.display = 'none';
+byID('cta').classList.add('open');

@@ -2,7 +2,7 @@
 
 var arguments = require('minimist')(process.argv.slice(2));
 
-var url = 'http://localhost:8080';
+var url = 'http://localhost:9000';
 if (arguments.url) {
   url = arguments.url;
 }

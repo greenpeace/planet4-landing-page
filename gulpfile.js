@@ -1,23 +1,39 @@
 /* global require, exports */
 
 const babel = require('gulp-babel');
-const backstop = require('backstopjs');
 const cleancss = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const connect = require('gulp-connect');
 const eslint = require('gulp-eslint');
 const fs = require('fs');
 const gulp = require('gulp');
+const js = require('gulp-uglify-es').default;
 const request = require('request');
 const scss = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const stylelint = require('gulp-stylelint');
-const js = require('gulp-uglify-es').default;
+const template = require('gulp-template');
 
-const dest = './static/dist';
+const api = 'countries.js';
+const dest = './dist/';
+const files_array = [
+  'index.html',
+  'version.txt',
+  'favicon.ico'
+];
+const img_array = 'static/img/*';
+const json = 'countries.json';
+const js_array = [
+  dest + api,
+  'static/js/app.js',
+  'static/js/dropdown.js',
+  'static/js/geoip.js',
+  'static/js/country_list.js'
+];
 const path_js = 'static/js/*.js';
 const style_scss = 'static/scss/**/*.scss';
 const style = 'static/scss/style.scss';
+
 
 function lint_css() {
   return gulp.src(style_scss)
@@ -46,7 +62,7 @@ function style_sass() {
 }
 
 function uglify() {
-  return gulp.src(path_js)
+  return gulp.src(js_array)
     .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
     .pipe(babel({
@@ -58,13 +74,32 @@ function uglify() {
     .pipe(connect.reload());
 }
 
+function img() {
+  return gulp.src([img_array])
+    .pipe(gulp.dest(dest + 'img/'));
+}
+
+function files() {
+  return gulp.src(files_array)
+    .pipe(gulp.dest(dest));
+}
+
+function inject() {
+  const apiJSON = fs.readFileSync(dest + json);
+  const apiDict = JSON.parse(apiJSON);
+
+  return gulp.src('static/api/' + api)
+    .pipe(template({api: JSON.stringify(apiDict)}))
+    .pipe(gulp.dest(dest));
+}
+
 function countries() {
   const api = fs.readFileSync('API.txt', 'utf8').trim();
   if(!fs.existsSync(dest)) {
     fs.mkdirSync(dest);
   }
   return request(api)
-    .pipe(fs.createWriteStream('static/dist/countries.json'));
+    .pipe(fs.createWriteStream(dest + json));
 }
 
 function watch(done) {
@@ -74,18 +109,20 @@ function watch(done) {
 }
 
 function backstop_reference(done) {
+  const backstop = require('backstopjs');
   backstop('reference', {config: './backstop.js'});
   done();
 }
 
 function backstop_test(done) {
+  const backstop = require('backstopjs');
   backstop('test', {config: './backstop.js'});
   done();
 }
 
 function serve(done) {
   connect.server({
-    root: './',
+    root: './dist',
     livereload: true,
     port: '9000'
   });
@@ -95,6 +132,6 @@ function serve(done) {
 exports.backstop_reference = backstop_reference;
 exports.backstop_test = backstop_test;
 exports.test = gulp.parallel(lint_css, lint_js);
-exports.countries = countries;
-exports.build = gulp.series(lint_css, lint_js, style_sass, uglify);
+exports.countries = gulp.series(countries, inject);
+exports.build = gulp.series(lint_css, style_sass, uglify, img, files);
 exports.default = gulp.series(watch, serve);
