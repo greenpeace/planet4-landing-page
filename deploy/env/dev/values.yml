@@ -1,4 +1,6 @@
 ---
 hostname: dev.landing.p4.greenpeace.org
 environment: development
-api: https://release.k8s.p4.greenpeace.org/international/wp-content/themes/planet4-master-theme/templates/countries.json
+api: >
+  https://release.k8s.p4.greenpeace.org/international/
+  wp-content/themes/planet4-master-theme/templates/countries.json
