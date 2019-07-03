@@ -76,7 +76,7 @@ function uglify() {
 
 function img() {
   return gulp.src([img_array])
-    .pipe(gulp.dest(dest + 'img/'));
+    .pipe(gulp.dest(dest + 'static/img/'));
 }
 
 function files() {
