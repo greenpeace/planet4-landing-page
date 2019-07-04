@@ -4,6 +4,10 @@
 
 ## Run locally
 
+Update styleguide submodule
+
+    git submodule update --init --recursive
+
 Use [npm](https://www.npmjs.com/) to install the necessary gulp:
 
     npm -g install gulp-cli
@@ -60,9 +64,9 @@ These in turn do the following:
 
 ### Notes
 
-- This repository does not have its own helm chart. It utilises the helm chart [Planet4 static](https://github.com/greenpeace/planet4-helm-static) which can been created to accomodate all static applications.
+- This repository does not have its own helm chart. It utilises the helm chart [Planet4 static](https://github.com/greenpeace/planet4-helm-static) which has been created to accomodate all static applications.
 - New commits to the master branch get deployed at the url: https://dev.landing.p4.greenpeace.org
-- New tags get deployed at the url: https://stage.landing.p4.greenpeace.org
+- New tags get deployed at the url: https://landing.p4.greenpeace.org
 - If you want to confirm the version deployed you can check `/version.txt` on either of the above urls.
 
 ## Contribute
