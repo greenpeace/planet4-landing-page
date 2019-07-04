@@ -57,14 +57,14 @@ function style_sass() {
     .pipe(scss().on('error', scss.logError))
     .pipe(cleancss({rebase: false}))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(dest))
+    .pipe(gulp.dest(dest + 'static/'))
     .pipe(connect.reload());
 }
 
 function uglify() {
   return gulp.src(js_array)
     .pipe(sourcemaps.init())
-    .pipe(concat('main.js'))
+    .pipe(concat('static/main.js'))
     .pipe(babel({
       presets: ['@babel/env']
     }))
