@@ -21,5 +21,5 @@ Object.entries(data).forEach(letter => {
     sublist_html += `</ul></li>`;
   }
 });
-let countries_html = `<h2>All countries</h2>${international_html}<ul class="countries_list">${sublist_html}</ul>`;
+let countries_html = `<h2>All countries and regions</h2>${international_html}<ul class="countries_list">${sublist_html}</ul>`;
 byID('country-list').innerHTML = countries_html;
