@@ -64,7 +64,7 @@ These in turn do the following:
 
 ### Notes
 
-- This repository does not have its own helm chart. It utilises the helm chart [Planet4 static](https://github.com/greenpeace/planet4-helm-static) which has been created to accomodate all static applications.
+- This repository does not have its own helm chart. It uses the helm chart [Planet4 static](https://github.com/greenpeace/planet4-helm-static) which has been created to accomodate all static applications.
 - New commits to the master branch get deployed at the url: https://dev.landing.p4.greenpeace.org
 - New tags get deployed at the url: https://landing.p4.greenpeace.org
 - If you want to confirm the version deployed you can check `/version.txt` on either of the above urls.
