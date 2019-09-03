@@ -4,3 +4,7 @@ environment: development
 api: >
   https://release.k8s.p4.greenpeace.org/international/
   wp-content/themes/planet4-master-theme/templates/countries.json
+ingress:
+  hosts:
+    - name: dev.k8s.p4.greenpeace.org
+      path: global
