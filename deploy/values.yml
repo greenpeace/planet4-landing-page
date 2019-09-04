@@ -4,4 +4,4 @@ image:
 geoip:
   enabled: true
 pagespeed:
-  enabled: true
+  enabled: false
