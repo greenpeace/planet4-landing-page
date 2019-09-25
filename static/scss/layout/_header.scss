@@ -96,6 +96,11 @@ header {
       background-color: #e8e8ec;
       border-color: #e8e8ec;
       color: black;
+
+      &:active {
+        background-color: #e8e8ec !important;
+        border-color: #e8e8ec !important;
+      }
     }
 
     i.arrow {
