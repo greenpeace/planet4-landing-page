@@ -7,7 +7,6 @@ api: >
 ingress:
   hosts:
     - name: www.greenpeace.org
-    - name: www.greenpeace.org
       path: global
     - name: landing.p4.greenpeace.org
     - name: landing.p4.greenpeace.org

@@ -8,4 +8,3 @@ pagespeed:
 ingress:
   annotations:
     traefik.frontend.rule.type: PathPrefixStrip
-    traefik.ingress.kubernetes.io/priority: "1"
