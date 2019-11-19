@@ -7,6 +7,6 @@ pagespeed:
   enabled: false
 ingress:
   annotations:
-    - "traefik.frontend.rule.type: PathPrefixStrip"
-    - "traefik.frontend.rule=HostRegexp:{catchall:.*}"
-    - "traefik.ingress.kubernetes.io/priority: '1'"
+    "traefik.frontend.rule.type: PathPrefixStrip"
+    "traefik.frontend.rule=HostRegexp:{catchall:.*}"
+    "traefik.ingress.kubernetes.io/priority: '1'"
