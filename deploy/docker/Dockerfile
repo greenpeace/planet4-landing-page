@@ -1,3 +1,3 @@
-FROM gcr.io/planet-4-151612/openresty:v0.10.253
+FROM gcr.io/planet-4-151612/openresty:latest
 
 COPY public/ /app/source/public
