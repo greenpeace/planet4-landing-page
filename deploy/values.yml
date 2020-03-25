@@ -6,8 +6,6 @@ openresty:
     enabled: true
     accountid: ""
     license: ""
-  cloudflare:
-    enabled: false
 pagespeed:
   enabled: false
 ingress:

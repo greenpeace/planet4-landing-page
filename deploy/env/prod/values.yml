@@ -14,3 +14,6 @@ ingress:
     - name: stage.landing.p4.greenpeace.org
     - name: stage.landing.p4.greenpeace.org
       path: global
+openresty:
+  cloudflare:
+    enabled: true
