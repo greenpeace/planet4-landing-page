@@ -48,7 +48,9 @@ jobs:
       - run: make -C deploy tag
       - run: make -C deploy build
       - run: make -C deploy docker-push
-      - run: make -C deploy prod
+      - run:
+          command: make -C deploy prod
+          no_output_timeout: 30m
 
 workflows:
   version: 2
