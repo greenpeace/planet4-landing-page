@@ -1,8 +1,13 @@
 ---
 image:
   repository: greenpeaceinternational/p4-landing-page
-geoip:
-  enabled: true
+openresty:
+  geoip:
+    enabled: true
+    accountid: ""
+    license: ""
+  cloudflare:
+    enabled: false
 pagespeed:
   enabled: false
 ingress:

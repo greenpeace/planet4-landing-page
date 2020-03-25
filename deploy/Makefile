@@ -99,6 +99,8 @@ dev: test dev-config
 		--set image.tag=$(BUILD_NUM) \
 		--values values.yml \
 		--values env/dev/values.yml
+		--set openresty.geoip.accountid=$(GEOIP_ACCOUNTID) \
+		--set openresty.geoip.license=$(GEOIP_LICENSE)
 
 prod: test prod-config
 	helm init --client-only
@@ -109,3 +111,5 @@ prod: test prod-config
 		--set image.tag=$(BUILD_NUM) \
 		--values values.yml \
 		--values env/prod/values.yml
+		--set openresty.geoip.accountid=$(GEOIP_ACCOUNTID) \
+		--set openresty.geoip.license=$(GEOIP_LICENSE)
