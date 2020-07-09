@@ -23,12 +23,14 @@ const files_array = [
 ];
 const img_array = 'static/img/*';
 const json = 'countries.json';
+const urls_json = 'urls.json';
 const js_array = [
   dest + api,
   'static/js/app.js',
   'static/js/dropdown.js',
   'static/js/geoip.js',
-  'static/js/country_list.js'
+  'static/js/country_list.js',
+  'static/js/redirect.js'
 ];
 const path_js = 'static/js/*.js';
 const style_scss = 'static/scss/**/*.scss';
@@ -87,9 +89,10 @@ function files() {
 function inject() {
   const apiJSON = fs.readFileSync(dest + json);
   const apiDict = JSON.parse(apiJSON);
+  const urlDict = JSON.parse(fs.readFileSync(dest + urls_json));
 
   return gulp.src('static/api/' + api)
-    .pipe(template({api: JSON.stringify(apiDict)}))
+    .pipe(template({api: JSON.stringify(apiDict), urlList: JSON.stringify(urlDict)}))
     .pipe(gulp.dest(dest));
 }
 
@@ -100,6 +103,31 @@ function countries() {
   }
   return request(api)
     .pipe(fs.createWriteStream(dest + json));
+}
+
+function urls(done) {
+  const apiJSON = fs.readFileSync(dest + json);
+  const apiDict = JSON.parse(apiJSON);
+
+  urls = Object.entries(apiDict).map((letter) => {
+    return letter[1].map((country) => {
+      if (country.url) {
+        return [[country.url.trim().replace(/\/$/, ''), country.name.replace('Greenpeace', '').trim()]];
+      }
+      if (country.lang) {
+        return country.lang.map((lang) => [
+          lang.url.trim().replace(/\/$/, ''),
+          country.name.replace('Greenpeace', '').trim()
+        ]);
+      }
+    });
+  }).flat(2);
+
+  if(!fs.existsSync(dest)) {
+    fs.mkdirSync(dest);
+  }
+  fs.writeFileSync(dest + urls_json, JSON.stringify(urls));
+  done();
 }
 
 function watch(done) {
@@ -132,6 +160,6 @@ function serve(done) {
 exports.backstop_reference = backstop_reference;
 exports.backstop_test = backstop_test;
 exports.test = gulp.parallel(lint_css, lint_js);
-exports.countries = gulp.series(countries, inject);
+exports.countries = gulp.series(countries, urls, inject);
 exports.build = gulp.series(lint_css, style_sass, uglify, img, files);
 exports.default = gulp.series(watch, serve);
