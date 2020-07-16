@@ -7,6 +7,8 @@ api: >
 ingress:
   hosts:
     - name: dev.landing.p4.greenpeace.org
+    - name: dev.landing.p4.greenpeace.org
+      path: global
 openresty:
   cloudflare:
     enabled: false
