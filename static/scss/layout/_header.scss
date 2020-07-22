@@ -103,6 +103,15 @@ header {
       }
     }
 
+    .btn.solo {
+      min-width: $btn-width;
+      width: inherit;
+    }
+
+    .nro-name {
+      white-space: nowrap;
+    }
+
     i.arrow {
       display: none;
       border: solid white;
