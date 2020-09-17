@@ -20,7 +20,7 @@ On first run fetch the countries data:
 
     gulp countries
 
-Build the style guide:
+Build the landing page:
 
     gulp build
 
@@ -28,13 +28,13 @@ Run the local webserver:
 
     gulp
 
-Browse to [localhost:8080](http://localhost:9000).
+Browse to [localhost:9000](http://localhost:9000).
 
 ## Test
 
 To run linters:
 
-    gulp test
+    gulp lint
 
 For visual regression tests, start by generating reference screenshots:
 
@@ -45,6 +45,13 @@ At any time you can create test screenshots:
     gulp backstop_test
 
 Once this is finished a report will be launched in your browser in order to inspect the visual diff.
+
+To run accessibility test:
+
+    gulp test
+
+Results are available in `pa11y/report.html` (open in your browser) and `pa11y/report.json` (open with `jq`).  
+Configuration is in `.pa11y`.
 
 ## Deployment
 
