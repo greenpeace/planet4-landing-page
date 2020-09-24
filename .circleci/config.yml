@@ -18,6 +18,25 @@ jobs:
       - run: make -C deploy checkout
       - run: make -C deploy lint
 
+  test-a11y:
+    <<: *defaults
+    environment:
+      GOOGLE_PROJECT_ID: planet4-production
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - run: make -C deploy checkout
+      - run: make -C deploy build
+      - run: make -C deploy test-a11y
+      - run:
+          name: Analyse test results
+          command: |
+            errors=$(jq '.["issues"] | unique_by(.["type"]) | map(select(.["type"] == "error")) | .[]' ~/app/deploy/docker/source/pa11y/report.json)
+            if [ ! -z "${errors}" ]; then echo "Errors found, see report in artifacts." && exit 1; else echo "No errors, report available in artifacts."; fi
+      - store_artifacts:
+          path: ~/app/deploy/docker/source/pa11y
+
   deploy-dev:
     <<: *defaults
     environment:
@@ -30,9 +49,12 @@ jobs:
       - run: docker-login.sh
       - run: make -C deploy checkout
       - run: make -C deploy commit
-      - run: make -C deploy build
+      - run: make -C deploy docker-build
+      - run: make -C deploy test-a11y
       - run: make -C deploy docker-push
       - run: make -C deploy dev
+      - store_artifacts:
+          path: ~/app/deploy/docker/source/
 
   deploy-tag:
     <<: *defaults
@@ -46,11 +68,14 @@ jobs:
       - run: docker-login.sh
       - run: make -C deploy checkout
       - run: make -C deploy tag
-      - run: make -C deploy build
+      - run: make -C deploy docker-build
+      - run: make -C deploy test-a11y
       - run: make -C deploy docker-push
       - run:
           command: make -C deploy prod
           no_output_timeout: 30m
+      - store_artifacts:
+          path: ~/app/deploy/docker/source/
 
 workflows:
   version: 2
@@ -63,6 +88,14 @@ workflows:
               ignore: master
             tags:
               ignore: /.*/
+      - test-a11y:
+          context: org-global
+          filters:
+            branches:
+              ignore: master
+            tags:
+              ignore: /.*/
+
   dev:
     jobs:
       - deploy-dev:

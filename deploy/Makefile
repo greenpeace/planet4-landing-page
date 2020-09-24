@@ -29,6 +29,9 @@ BRANCH_NAME ?= $(shell git rev-parse --abbrev-ref HEAD | sed 's/$(SED_MATCH)/-/g
 BUILD_TAG ?= $(shell git tag -l --points-at HEAD | tail -n1 | sed 's/$(SED_MATCH)/-/g')
 endif
 
+# A11y test config
+PA11Y_DIR = pa11y
+PA11Y_CONF = .pa11y
 
 
 # If BUILD_TAG is blank there's no tag on this commit
@@ -43,7 +46,7 @@ endif
 REVISION_TAG = $(shell git rev-parse --short HEAD)
 
 
-test:
+lint:
 	yamllint values.yml
 	yamllint env/dev/values.yml
 	yamllint env/prod/values.yml
@@ -67,13 +70,31 @@ docker/public:
 	sudo npm install -g gulp-cli
 	cd docker/source ; git submodule init
 	cd docker/source ; git submodule update
+	cd docker/source ; gulp lint
 	cd docker/source ; gulp countries
 	cd docker/source ; gulp build
-	mv docker/source/dist docker/public
+	cp -R docker/source/dist docker/public
 
-lint: test docker/public
+build: lint docker/public
 
-build: test pull docker/public echo-build
+.PHONY: test-a11y
+test-a11y: install-pa11y
+	cd docker/source ; gulp & sleep 3
+	cd docker/source ; gulp test
+
+.PHONY: install-pa11y
+install-pa11y: install-puppeteer-deps
+	npm install pa11y-ci pa11y-ci-reporter-html
+
+.PHONY: install-puppeteer-deps
+install-puppeteer-deps:
+	sudo apt-get update && sudo apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 \
+	libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 \
+	libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
+	libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
+	ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+
+docker-build: lint pull docker/public echo-build
 	docker build --tag=greenpeaceinternational/p4-landing-page:$(BUILD_NUM) docker
 
 docker-push:
@@ -90,7 +111,7 @@ prod-config:
 echo-build:
 	$(info BUILD_NUM is [${BUILD_NUM}])
 
-dev: test dev-config
+dev: lint dev-config
 	helm init --client-only
 	helm repo add p4 https://planet4-helm-charts.storage.googleapis.com && \
 	helm repo update
@@ -102,7 +123,7 @@ dev: test dev-config
 		--set openresty.geoip.accountid=$(GEOIP_ACCOUNTID) \
 		--set openresty.geoip.license=$(GEOIP_LICENSE)
 
-prod: test prod-config
+prod: lint prod-config
 	helm init --client-only
 	helm repo add p4 https://planet4-helm-charts.storage.googleapis.com && \
 	helm repo update
