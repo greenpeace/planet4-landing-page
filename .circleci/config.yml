@@ -54,7 +54,7 @@ jobs:
       - run: make -C deploy docker-push
       - run: make -C deploy dev
       - store_artifacts:
-          path: ~/app/deploy/docker/source/
+          path: ~/app/deploy/docker/source/pa11y
 
   deploy-tag:
     <<: *defaults
@@ -75,7 +75,7 @@ jobs:
           command: make -C deploy prod
           no_output_timeout: 30m
       - store_artifacts:
-          path: ~/app/deploy/docker/source/
+          path: ~/app/deploy/docker/source/pa11y
 
 workflows:
   version: 2
