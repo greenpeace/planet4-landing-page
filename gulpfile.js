@@ -18,6 +18,7 @@ const api = 'countries.js';
 const dest = './dist/';
 const files_array = [
   'index.html',
+  '404.html',
   'version.txt',
   'favicon.ico'
 ];
