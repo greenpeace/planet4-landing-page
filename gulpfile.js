@@ -9,6 +9,7 @@ const fs = require('fs');
 const gulp = require('gulp');
 const js = require('gulp-uglify-es').default;
 const request = require('request');
+const replace = require('gulp-replace');
 const scss = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const stylelint = require('gulp-stylelint');
@@ -18,7 +19,6 @@ const api = 'countries.js';
 const dest = './dist/';
 const files_array = [
   'index.html',
-  '404.html',
   'version.txt',
   'favicon.ico'
 ];
@@ -37,6 +37,14 @@ const path_js = 'static/js/*.js';
 const style_scss = 'static/scss/**/*.scss';
 const style = 'static/scss/style.scss';
 
+
+function replace_static() {
+  const static = fs.readFileSync('STATIC.txt', 'utf8').trim();
+
+  return gulp.src('./404.html')
+    .pipe(replace('{{static}}', static))
+    .pipe(gulp.dest(dest));
+}
 
 function lint_css() {
   return gulp.src(style_scss)
@@ -179,6 +187,6 @@ exports.backstop_reference = backstop_reference;
 exports.backstop_test = backstop_test;
 exports.lint = gulp.parallel(lint_css, lint_js);
 exports.countries = gulp.series(countries, urls, inject);
-exports.build = gulp.series(lint_css, style_sass, uglify, img, files);
+exports.build = gulp.series(lint_css, style_sass, uglify, img, files, replace_static);
 exports.test = gulp.series(a11y_test);
 exports.default = gulp.series(watch, serve);
