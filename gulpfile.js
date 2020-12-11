@@ -33,10 +33,14 @@ const js_array = [
   'static/js/country_list.js',
   'static/js/redirect.js'
 ];
+const js_404_array = [
+  dest + api,
+  'static/js/l10n.js'
+];
 const path_js = 'static/js/*.js';
 const style_scss = 'static/scss/**/*.scss';
 const style = 'static/scss/style.scss';
-
+const style_404 = 'static/scss/404.scss';
 
 function replace_static() {
   const static = fs.readFileSync('STATIC.txt', 'utf8').trim();
@@ -72,10 +76,33 @@ function style_sass() {
     .pipe(connect.reload());
 }
 
+function style_sass_404() {
+  return gulp.src(style_404)
+    .pipe(sourcemaps.init())
+    .pipe(scss().on('error', scss.logError))
+    .pipe(cleancss({rebase: false}))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(dest + 'static/'))
+    .pipe(connect.reload());
+}
+
 function uglify() {
   return gulp.src(js_array)
     .pipe(sourcemaps.init())
     .pipe(concat('static/main.js'))
+    .pipe(babel({
+      presets: ['@babel/env']
+    }))
+    .pipe(js())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(dest))
+    .pipe(connect.reload());
+}
+
+function uglify_404() {
+  return gulp.src(js_404_array)
+    .pipe(sourcemaps.init())
+    .pipe(concat('static/404.js'))
     .pipe(babel({
       presets: ['@babel/env']
     }))
@@ -187,6 +214,6 @@ exports.backstop_reference = backstop_reference;
 exports.backstop_test = backstop_test;
 exports.lint = gulp.parallel(lint_css, lint_js);
 exports.countries = gulp.series(countries, urls, inject);
-exports.build = gulp.series(lint_css, style_sass, uglify, img, files, replace_static);
+exports.build = gulp.series(lint_css, style_sass, style_sass_404, uglify, uglify_404, img, files, replace_static);
 exports.test = gulp.series(a11y_test);
 exports.default = gulp.series(watch, serve);
