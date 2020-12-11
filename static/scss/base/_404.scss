@@ -25,3 +25,28 @@ header {
   }
 }
 
+section {
+  padding: 50px;
+  vertical-align: middle;
+  color: white;
+
+  h1 {
+    margin-bottom: 0;
+    font-size: 6rem;
+    font-weight: 900;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 900;
+  }
+
+  p {
+    font-size: 3rem;
+    font-weight: 300;
+    width: 450px;
+    line-height: 1;
+    margin: 0;
+  }
+}
