@@ -9,7 +9,7 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     dataLayer.push({
-      'pageType': 'Landing Page',
+      'pageType': 'Global 404 Page',
     });
   </script>
 
@@ -24,7 +24,7 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.greenpeace.org">
   <meta property="og:description" content="Together we can change the world">
-  <meta property="og:image" content="https://www.greenpeace.org/global/static/img/image.jpg">
+  <meta property="og:image" content="https://www.greenpeace.org/global/static/img/404.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
   <meta property="og:site_name" content="Greenpeace">
@@ -33,29 +33,38 @@
   <meta name="twitter:site" content="Greenpeace">
   <meta name="twitter:title" content="Greenpeace">
   <meta name="twitter:description" content="Together we can change the world">
-  <meta name="twitter:image" content="https://www.greenpeace.org/global/static/img/image.jpg">
+  <meta name="twitter:image" content="https://www.greenpeace.org/global/static/img/404.jpg">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="shortcut icon" type="image/ico" href="favicon.ico">
 
-  <link rel='stylesheet' href='https://www.greenpeace.org/global/static/style.css' type='text/css' media='all'>
+  <link rel='stylesheet' href='{{static}}404.css' type='text/css' media='all'>
 </head>
 
 <body>
   <!-- GPI Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7SG829"
-  height="0" width="0" style="display:none;visibility:hidden;"></iframe></noscript>
+  height="0" width="0" style="display: none;visibility: hidden;"></iframe></noscript>
   <!-- End GPI Google Tag Manager (noscript) -->
 
   <header>
-    <div class="page-header-background">
-      <img src="https://www.greenpeace.org/global/static/img/image.jpg" srcset="https://www.greenpeace.org/global/static/img/image.jpg 1200w, https://www.greenpeace.org/global/static/img/image-992w.jpg 992w, https://www.greenpeace.org/global/static/img/image-768w.jpg 768w, https://www.greenpeace.org/global/static/img/image-575w.jpg 575w, https://www.greenpeace.org/global/static/img/image-320w.jpg 320w" class="page-header-image">
-    </div>
+    <nav id="header" class="top-navigation navbar">
+      <a class="site-logo" href="https://www.greenpeace.org/global/">
+        <img src="{{static}}img/gp-logo.svg" alt="Greenpeace" class="logo">
+      </a>
+    </nav>
 
-    <div>
-      <img src="https://www.greenpeace.org/global/static/img/gp-logo.svg" alt="Greenpeace" class="logo">
+    <div class="page-header-background">
+      <img src="{{static}}img/404.jpg" srcset="{{static}}img/404.jpg 1200w, {{static}}img/404-992w.jpg 992w, {{static}}img/404-768w.jpg 768w, {{static}}img/404-575w.jpg 575w, {{static}}img/404-320w.jpg 320w" class="page-header-image">
     </div>
   </header>
 
+  <section>
+    <h1>404</h1>
+    <h2 data-l10n-key="subtitle">We looked everywhere...</h2>
+    <p data-l10n-key="text">but it looks like this page is missing</p>
+  </section>
+
+  <script src="{{static}}404.js"></script>
 </body>
 </html>

@@ -60,10 +60,12 @@ checkout:
 commit:
 	echo $${CIRCLE_SHA1:0:8} > $(APP_SOURCE)/version.txt
 	yq -r .api /home/circleci/app/deploy/env/dev/values.yml | tr -d '\n\ ' > $(APP_SOURCE)/API.txt
+	yq -r .static /home/circleci/app/deploy/env/dev/values.yml | tr -d '\n\ ' > $(APP_SOURCE)/STATIC.txt
 
 tag:
 	echo ${CIRCLE_TAG} > $(APP_SOURCE)/version.txt
 	yq -r .api /home/circleci/app/deploy/env/prod/values.yml | tr -d '\n\ ' > $(APP_SOURCE)/API.txt
+	yq -r .static /home/circleci/app/deploy/env/dev/values.yml | tr -d '\n\ ' > $(APP_SOURCE)/STATIC.txt
 
 docker/public:
 	cd docker/source ; npm install --production
