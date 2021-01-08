@@ -1,52 +1,127 @@
-html,
 body {
-  margin: 0;
-  height: 100%;
-}
-
-body {
-  font-family: $roboto;
+  background-color: $white;
 }
 
 header {
-  height: 100%;
   background: none;
+  height: auto;
 
   .top-navigation {
-    background: white;
+    background: $white;
+
+    .site-logo {
+      position: relative;
+
+      .logo {
+        width: 160px;
+        vertical-align: middle;
+      }
+    }
   }
 
   .page-header-background {
-    height: 100%;
+    position: relative;
+    height: auto;
+    margin-top: 3.375rem;
+    width: 100%;
 
     .page-header-image {
-      height: 100%;
+      height: 230px;
     }
   }
 }
 
 section {
-  padding: 50px;
-  vertical-align: middle;
-  color: white;
+  padding: 24px;
+  color: $grey-80;
+  font-family: $roboto;
+  box-sizing: border-box;
 
   h1 {
-    margin-bottom: 0;
-    font-size: 6rem;
-    font-weight: 900;
+    margin: 0;
+    font-size: $font-size-xxxxl;
+    letter-spacing: 2px;
   }
 
   h2 {
     margin: 0;
-    font-size: 3rem;
+    font-size: $font-size-xl;
     font-weight: 900;
+    line-height: 1;
   }
 
   p {
-    font-size: 3rem;
-    font-weight: 300;
-    width: 450px;
+    font-size: $font-size-xl;
+    font-weight: 400;
+    margin: 8px 0;
     line-height: 1;
-    margin: 0;
+  }
+
+  .btn {
+    margin-top: 24px;
+  }
+}
+
+@include medium-and-up {
+  header {
+    .top-navigation .site-logo {
+      text-align: left;
+      padding: 0 24px;
+    }
+
+    .page-header-background {
+      margin-top: 3.75rem;
+
+      .page-header-image {
+        height: 385px;
+      }
+    }
+  }
+
+  section {
+    padding: 40px 60px;
+    max-width: 460px;
+
+    h1 {
+      font-size: 90px;
+    }
+
+    .btn {
+      margin-top: 32px;
+    }
+  }
+}
+
+@include large-and-up {
+  header {
+    height: 100vh;
+
+    .page-header-background {
+      min-height: 730px;
+      height: 100%;
+
+      .page-header-image {
+        height: 100%;
+      }
+    }
+  }
+
+  section {
+    color: $white;
+    position: absolute;
+    max-width: 590px;
+    top: 25%;
+
+    h1 {
+      font-size: 110px;
+    }
+
+    h2, p {
+      font-size: 40px;
+    }
+
+    .btn {
+      margin-top: 40px;
+    }
   }
 }
