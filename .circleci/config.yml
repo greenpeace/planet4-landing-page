@@ -102,7 +102,7 @@ workflows:
           context: org-global
           filters:
             branches:
-              only: planet-5719
+              only: master
   tag:
     jobs:
       - deploy-tag:
