@@ -70,8 +70,7 @@ tag:
 docker/public:
 	cd docker/source ; npm install --production
 	sudo npm install -g gulp-cli
-	cd docker/source ; git submodule init
-	cd docker/source ; git submodule update
+	cd docker/source ; git submodule update --init --depth 1
 	cd docker/source ; gulp lint
 	cd docker/source ; gulp countries
 	cd docker/source ; gulp build
