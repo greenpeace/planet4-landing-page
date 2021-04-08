@@ -1,9 +1,9 @@
 // Global
-@import "master-theme/assets/src/scss/styleguide/src/base/variables";
-@import "master-theme/assets/src/scss/styleguide/src/base/colors";
-@import "master-theme/assets/src/scss/styleguide/src/base/mixins";
-@import "master-theme/assets/src/scss/styleguide/src/base/fonts";
-@import "master-theme/assets/src/scss/styleguide/src/base/typography";
+@import "master-theme/assets/src/scss/base/variables";
+@import "master-theme/assets/src/scss/base/colors";
+@import "master-theme/assets/src/scss/base/mixins";
+@import "master-theme/assets/src/scss/base/fonts";
+@import "master-theme/assets/src/scss/base/typography";
 
 // Local
 @import "base/variables";
@@ -14,6 +14,6 @@
 @import "layout/country_list";
 
 // Components
-@import "master-theme/assets/src/scss/styleguide/src/components/buttons";
-@import "master-theme/assets/src/scss/styleguide/src/components/spinner";
+@import "master-theme/assets/src/scss/components/buttons";
+@import "master-theme/assets/src/scss/components/spinner";
 @import "components/spinner";
