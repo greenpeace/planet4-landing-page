@@ -8,9 +8,11 @@ static: >
   https://dev.landing.p4.greenpeace.org/global/static/
 ingress:
   hosts:
+    - name: www-dev.greenpeace.org
+      path: global      
     - name: dev.landing.p4.greenpeace.org
     - name: dev.landing.p4.greenpeace.org
       path: global
 openresty:
   cloudflare:
-    enabled: false
+    enabled: true
