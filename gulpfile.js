@@ -23,7 +23,7 @@ const files_array = [
   'favicon.ico'
 ];
 const img_array = 'static/img/*';
-const json = 'countries.json';
+const countries_json = 'static/scss/master-theme/templates/countries.json';
 const urls_json = 'urls.json';
 const js_array = [
   dest + api,
@@ -123,7 +123,7 @@ function files() {
 }
 
 function inject() {
-  const apiJSON = fs.readFileSync(dest + json);
+  const apiJSON = fs.readFileSync(countries_json);
   const apiDict = JSON.parse(apiJSON);
   const urlDict = JSON.parse(fs.readFileSync(dest + urls_json));
 
@@ -132,17 +132,8 @@ function inject() {
     .pipe(gulp.dest(dest));
 }
 
-function countries() {
-  const api = fs.readFileSync('API.txt', 'utf8').trim();
-  if(!fs.existsSync(dest)) {
-    fs.mkdirSync(dest);
-  }
-  return request(api)
-    .pipe(fs.createWriteStream(dest + json));
-}
-
-function urls(done) {
-  const apiJSON = fs.readFileSync(dest + json);
+function countries(done) {
+  const apiJSON = fs.readFileSync(countries_json);
   const apiDict = JSON.parse(apiJSON);
 
   urls = Object.entries(apiDict).map((letter) => {
@@ -213,7 +204,7 @@ function serve(done) {
 exports.backstop_reference = backstop_reference;
 exports.backstop_test = backstop_test;
 exports.lint = gulp.parallel(lint_css, lint_js);
-exports.countries = gulp.series(countries, urls, inject);
+exports.countries = gulp.series(countries, inject);
 exports.build = gulp.series(lint_css, style_sass, style_sass_404, uglify, uglify_404, img, files, replace_static);
 exports.test = gulp.series(a11y_test);
 exports.default = gulp.series(watch, serve);
