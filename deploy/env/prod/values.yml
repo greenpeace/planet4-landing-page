@@ -21,3 +21,6 @@ maxReplicaCount: 5
 openresty:
   cloudflare:
     enabled: true
+resources:
+  limits:
+    memory: 192Mi
