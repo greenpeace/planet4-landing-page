@@ -11,3 +11,5 @@ pagespeed:
 ingress:
   annotations:
     traefik.frontend.rule.type: PathPrefixStrip
+healthProbes:
+  livenessDelay: 45
