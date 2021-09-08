@@ -5,13 +5,10 @@ api: >
   https://www-stage.greenpeace.org/international/
   wp-content/themes/planet4-master-theme/templates/countries.json
 static: >
-  https://dev.landing.p4.greenpeace.org/global/static/
+  https://www-dev.greenpeace.org/global/static/
 ingress:
   hosts:
     - name: www-dev.greenpeace.org
-      path: global
-    - name: landing-dev.greenpeace.org
-    - name: landing-dev.greenpeace.org
       path: global
 openresty:
   cloudflare:
