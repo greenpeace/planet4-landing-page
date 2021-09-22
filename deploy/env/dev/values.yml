@@ -1,5 +1,5 @@
 ---
-hostname: www-dev.greenpeace.org
+hostname: dev.landing.p4.greenpeace.org
 environment: development
 api: >
   https://www-stage.greenpeace.org/international/
@@ -10,8 +10,8 @@ ingress:
   hosts:
     - name: www-dev.greenpeace.org
       path: global
-    - name: landing-dev.greenpeace.org
-    - name: landing-dev.greenpeace.org
+    - name: dev.landing.p4.greenpeace.org
+    - name: dev.landing.p4.greenpeace.org
       path: global
 openresty:
   cloudflare:
