@@ -4,16 +4,31 @@ const babel = require('gulp-babel');
 const cleancss = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const connect = require('gulp-connect');
+const dashdash = require('@greenpeace/dashdash');
+const autoprefixer = require('autoprefixer');
+const postcss = require('gulp-postcss');
 const eslint = require('gulp-eslint');
 const fs = require('fs');
 const gulp = require('gulp');
 const js = require('gulp-uglify-es').default;
-const request = require('request');
 const replace = require('gulp-replace');
 const scss = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const stylelint = require('gulp-stylelint');
 const template = require('gulp-template');
+
+const mediaQueryAliases = {
+  '(max-width: 576px)': 'mobile-only',
+  '(min-width: 576px)': 'small-and-up',
+  '(min-width: 768px)': 'medium-and-up',
+  '(min-width: 992px)': 'large-and-up',
+  '(min-width: 1200px)': 'x-large-and-up',
+};
+
+const postcss_plugins = [
+  autoprefixer(),
+  dashdash({ mediaQueryAliases, mediaQueryAtStart: false }),
+]
 
 const api = 'countries.js';
 const dest = './dist/';
@@ -71,6 +86,7 @@ function style_sass() {
     .pipe(sourcemaps.init())
     .pipe(scss().on('error', scss.logError))
     .pipe(cleancss({rebase: false}))
+    .pipe(postcss(postcss_plugins))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(dest + 'static/'))
     .pipe(connect.reload());
@@ -80,6 +96,7 @@ function style_sass_404() {
   return gulp.src(style_404)
     .pipe(sourcemaps.init())
     .pipe(scss().on('error', scss.logError))
+    .pipe(postcss(postcss_plugins))
     .pipe(cleancss({rebase: false}))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(dest + 'static/'))
