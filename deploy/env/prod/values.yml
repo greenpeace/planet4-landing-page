@@ -1,5 +1,5 @@
 ---
-hostname: landing.p4.greenpeace.org
+hostname: www.greenpeace.org
 environment: production
 api: >
   https://www.greenpeace.org/international/wp-content/
@@ -9,6 +9,8 @@ static: >
 ingress:
   hosts:
     - name: www.greenpeace.org
+      path: global
+    - name: www-stage.greenpeace.org
       path: global
 minReplicaCount: 2
 maxReplicaCount: 5
