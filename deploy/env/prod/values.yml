@@ -10,12 +10,6 @@ ingress:
   hosts:
     - name: www.greenpeace.org
       path: global
-    - name: landing.p4.greenpeace.org
-    - name: landing.p4.greenpeace.org
-      path: global
-    - name: stage.landing.p4.greenpeace.org
-    - name: stage.landing.p4.greenpeace.org
-      path: global
 minReplicaCount: 2
 maxReplicaCount: 5
 openresty:
