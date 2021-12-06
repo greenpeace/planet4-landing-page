@@ -10,6 +10,9 @@ ingress:
   hosts:
     - name: www-dev.greenpeace.org
       path: global
+    - name: landing-dev.greenpeace.org
+    - name: landing-dev.greenpeace.org
+      path: global
 openresty:
   cloudflare:
     enabled: true
