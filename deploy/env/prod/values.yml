@@ -15,6 +15,15 @@ ingress:
     - name: landing-stage.greenpeace.org
     - name: landing-stage.greenpeace.org
       path: global
+nginxingress:
+  hosts:
+    - name: www.greenpeace.org
+      path: global
+    - name: landing.greenpeace.org
+      path: global
+    - name: landing-stage.greenpeace.org
+    - name: landing-stage.greenpeace.org
+      path: global
 minReplicaCount: 2
 maxReplicaCount: 5
 openresty:
