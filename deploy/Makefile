@@ -130,6 +130,7 @@ prod: lint prod-config
 	helm repo update
 	helm upgrade --install --force --wait $(RELEASE_NAME) $(CHART_NAME) \
 		--namespace=$(NAMESPACE) \
+		--version=0.3.6 \
 		--set image.tag=$(BUILD_NUM) \
 		--values values.yml \
 		--values env/prod/values.yml \
