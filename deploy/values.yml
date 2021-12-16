@@ -11,5 +11,8 @@ pagespeed:
 ingress:
   annotations:
     traefik.frontend.rule.type: PathPrefixStrip
+nginxingress:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 healthProbes:
   livenessDelay: 45

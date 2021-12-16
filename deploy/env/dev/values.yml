@@ -1,5 +1,6 @@
 ---
 hostname: landing-dev.greenpeace.org
+hostpath: (|$)(.*)
 environment: development
 api: >
   https://www-stage.greenpeace.org/international/
@@ -15,9 +16,9 @@ ingress:
 nginxingress:
   hosts:
     - name: www-dev.greenpeace.org
-      path: global
+      path: global(/|$)(.*)
     - name: landing-dev.greenpeace.org
-      path: global
+      path: global(/|$)(.*)
 openresty:
   cloudflare:
     enabled: true
