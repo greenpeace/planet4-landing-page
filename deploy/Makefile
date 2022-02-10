@@ -1,6 +1,7 @@
 RELEASE_NAME ?= p4-landing
 
 CHART_NAME ?= p4/static
+CHART_VERSION ?= 0.3.10-alpha
 
 SHELL := /bin/bash
 
@@ -119,6 +120,7 @@ dev: lint dev-config
 	helm upgrade --install --force --wait $(RELEASE_NAME) $(CHART_NAME) \
 		--namespace=$(NAMESPACE) \
 		--set image.tag=$(BUILD_NUM) \
+		--version "$(CHART_VERSION)" \
 		--values values.yml \
 		--values env/dev/values.yml \
 		--set openresty.geoip.accountid=$(GEOIP_ACCOUNTID) \
