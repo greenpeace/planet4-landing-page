@@ -1,7 +1,7 @@
 RELEASE_NAME ?= p4-landing
 
 CHART_NAME ?= p4/static
-CHART_VERSION ?= 0.3.10-alpha
+CHART_VERSION ?= 0.4.0
 
 SHELL := /bin/bash
 
