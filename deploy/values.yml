@@ -2,6 +2,7 @@
 image:
   repository: greenpeaceinternational/p4-landing-page
 openresty:
+  custom_404: "/404.html"
   geoip:
     enabled: true
     accountid: ""
