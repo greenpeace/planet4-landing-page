@@ -1,6 +1,5 @@
 ---
 hostname: landing.greenpeace.org
-hostpath: (|$)(.*)
 environment: production
 api: >
   https://www.greenpeace.org/international/wp-content/
@@ -13,8 +12,6 @@ nginxingress:
       path: global(/|$)(.*)
     - name: landing.greenpeace.org
       path: global(/|$)(.*)
-    - name: landing-stage.greenpeace.org
-      path: (|$)(.*)
     - name: landing-stage.greenpeace.org
       path: global(/|$)(.*)
 minReplicaCount: 2
