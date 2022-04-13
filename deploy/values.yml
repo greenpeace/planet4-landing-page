@@ -1,4 +1,5 @@
 ---
+hosttls: true
 image:
   repository: greenpeaceinternational/p4-landing-page
 openresty:
