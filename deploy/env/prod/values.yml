@@ -1,28 +1,18 @@
 ---
 hostname: landing.greenpeace.org
+hostpath: (|$)(.*)
 environment: production
 api: >
   https://www.greenpeace.org/international/wp-content/
   themes/planet4-master-theme/templates/countries.json
 static: >
   https://www.greenpeace.org/global/static/
-ingress:
-  hosts:
-    - name: www.greenpeace.org
-      path: global
-    - name: landing.greenpeace.org
-      path: global
-    - name: landing-stage.greenpeace.org
-    - name: landing-stage.greenpeace.org
-      path: global
 nginxingress:
   hosts:
     - name: www.greenpeace.org
       path: global(/|$)(.*)
     - name: landing.greenpeace.org
       path: global(/|$)(.*)
-    - name: landing.greenpeace.org
-      path: (|$)(.*)
     - name: landing-stage.greenpeace.org
       path: (|$)(.*)
     - name: landing-stage.greenpeace.org
