@@ -113,10 +113,12 @@ echo-build:
 	$(info BUILD_NUM is [${BUILD_NUM}])
 
 dev: lint dev-config
-	helm init --client-only
-	helm repo add p4 https://planet4-helm-charts.storage.googleapis.com && \
-	helm repo update
-	helm upgrade --install --force --wait $(RELEASE_NAME) $(CHART_NAME) \
+  helm3 plugin install https://github.com/helm/helm-2to3.git || true
+	helm3 2to3 convert "${HELM_RELEASE}" || true
+	
+	helm3 repo add p4 https://planet4-helm-charts.storage.googleapis.com && \
+	helm3 repo update
+	helm3 upgrade --install --force --wait --timeout 300s $(RELEASE_NAME) $(CHART_NAME) \
 		--namespace=$(NAMESPACE) \
 		--set image.tag=$(BUILD_NUM) \
 		--values values.yml \
@@ -125,10 +127,12 @@ dev: lint dev-config
 		--set openresty.geoip.license=$(GEOIP_LICENSE)
 
 prod: lint prod-config
-	helm init --client-only
-	helm repo add p4 https://planet4-helm-charts.storage.googleapis.com && \
-	helm repo update
-	helm upgrade --install --force --wait $(RELEASE_NAME) $(CHART_NAME) \
+  helm3 plugin install https://github.com/helm/helm-2to3.git || true
+	helm3 2to3 convert "${HELM_RELEASE}" || true
+
+  helm3 repo add p4 https://planet4-helm-charts.storage.googleapis.com && \
+	helm3 repo update
+	helm3 upgrade --install --force --wait --timeout 300s $(RELEASE_NAME) $(CHART_NAME) \
 		--namespace=$(NAMESPACE) \
 		--set image.tag=$(BUILD_NUM) \
 		--values values.yml \
