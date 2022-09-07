@@ -47,9 +47,9 @@ REVISION_TAG = $(shell git rev-parse --short HEAD)
 
 
 lint:
-	yamllint values.yml
-	yamllint env/dev/values.yml
-	yamllint env/prod/values.yml
+	yamllint values.yaml
+	yamllint env/dev/values.yaml
+	yamllint env/prod/values.yaml
 
 pull:
 	docker pull gcr.io/planet-4-151612/openresty:latest
@@ -59,13 +59,13 @@ checkout:
 
 commit:
 	echo $${CIRCLE_SHA1:0:8} > $(APP_SOURCE)/version.txt
-	yq -r .api /home/circleci/app/deploy/env/dev/values.yml | tr -d '\n\ ' > $(APP_SOURCE)/API.txt
-	yq -r .static /home/circleci/app/deploy/env/dev/values.yml | tr -d '\n\ ' > $(APP_SOURCE)/STATIC.txt
+	yq -r .api /home/circleci/app/deploy/env/dev/values.yaml | tr -d '\n\ ' > $(APP_SOURCE)/API.txt
+	yq -r .static /home/circleci/app/deploy/env/dev/values.yaml | tr -d '\n\ ' > $(APP_SOURCE)/STATIC.txt
 
 tag:
 	echo ${CIRCLE_TAG} > $(APP_SOURCE)/version.txt
-	yq -r .api /home/circleci/app/deploy/env/prod/values.yml | tr -d '\n\ ' > $(APP_SOURCE)/API.txt
-	yq -r .static /home/circleci/app/deploy/env/prod/values.yml | tr -d '\n\ ' > $(APP_SOURCE)/STATIC.txt
+	yq -r .api /home/circleci/app/deploy/env/prod/values.yaml | tr -d '\n\ ' > $(APP_SOURCE)/API.txt
+	yq -r .static /home/circleci/app/deploy/env/prod/values.yaml | tr -d '\n\ ' > $(APP_SOURCE)/STATIC.txt
 
 docker/public:
 	cd docker/source ; npm install --production
@@ -113,25 +113,29 @@ echo-build:
 	$(info BUILD_NUM is [${BUILD_NUM}])
 
 dev: lint dev-config
-	helm init --client-only
-	helm repo add p4 https://planet4-helm-charts.storage.googleapis.com && \
-	helm repo update
-	helm upgrade --install --force --wait $(RELEASE_NAME) $(CHART_NAME) \
+  helm3 plugin install https://github.com/helm/helm-2to3.git || true
+	helm3 2to3 convert "${RELEASE_NAME}" || true
+	
+	helm3 repo add p4 https://planet4-helm-charts.storage.googleapis.com && \
+	helm3 repo update
+	helm3 upgrade --install --force --wait --timeout 300s $(RELEASE_NAME) $(CHART_NAME) \
 		--namespace=$(NAMESPACE) \
 		--set image.tag=$(BUILD_NUM) \
-		--values values.yml \
-		--values env/dev/values.yml \
+		--values values.yaml \
+		--values env/dev/values.yaml \
 		--set openresty.geoip.accountid=$(GEOIP_ACCOUNTID) \
 		--set openresty.geoip.license=$(GEOIP_LICENSE)
 
 prod: lint prod-config
-	helm init --client-only
-	helm repo add p4 https://planet4-helm-charts.storage.googleapis.com && \
-	helm repo update
-	helm upgrade --install --force --wait $(RELEASE_NAME) $(CHART_NAME) \
+  helm3 plugin install https://github.com/helm/helm-2to3.git || true
+	helm3 2to3 convert "${RELEASE_NAME}" || true
+
+  helm3 repo add p4 https://planet4-helm-charts.storage.googleapis.com && \
+	helm3 repo update
+	helm3 upgrade --install --force --wait --timeout 300s $(RELEASE_NAME) $(CHART_NAME) \
 		--namespace=$(NAMESPACE) \
 		--set image.tag=$(BUILD_NUM) \
-		--values values.yml \
-		--values env/prod/values.yml \
+		--values values.yaml \
+		--values env/prod/values.yaml \
 		--set openresty.geoip.accountid=$(GEOIP_ACCOUNTID) \
 		--set openresty.geoip.license=$(GEOIP_LICENSE)
