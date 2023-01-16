@@ -85,14 +85,14 @@ workflows:
           context: org-global
           filters:
             branches:
-              ignore: master
+              ignore: main
             tags:
               ignore: /.*/
       - test-a11y:
           context: org-global
           filters:
             branches:
-              ignore: master
+              ignore: main
             tags:
               ignore: /.*/
 
@@ -102,7 +102,7 @@ workflows:
           context: org-global
           filters:
             branches:
-              only: master
+              only: main
   tag:
     jobs:
       - deploy-tag:
