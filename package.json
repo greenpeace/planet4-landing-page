@@ -28,7 +28,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-stylelint": "^9.0.0",
     "gulp-template": "^5.0.0",
-    "gulp-uglify-es": "^1.0.4",
+    "gulp-uglify-es": "^3.0.0",
     "request": "^2.88.0",
     "stylelint": "^10.0.1"
   },
