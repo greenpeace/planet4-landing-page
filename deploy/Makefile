@@ -51,9 +51,6 @@ lint:
 	yamllint env/dev/values.yaml
 	yamllint env/prod/values.yaml
 
-pull:
-	docker pull gcr.io/planet-4-151612/openresty:latest
-
 checkout:
 	rsync -av /home/circleci/app/ $(APP_SOURCE)/ --exclude=deploy
 
@@ -95,7 +92,7 @@ install-puppeteer-deps:
 	libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
 	ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
 
-docker-build: lint pull docker/public echo-build
+docker-build: lint docker/public echo-build
 	docker build --tag=greenpeaceinternational/p4-landing-page:$(BUILD_NUM) docker
 
 docker-push:
