@@ -12,8 +12,6 @@ jobs:
     environment:
       GOOGLE_PROJECT_ID: planet4-production
     steps:
-      - setup_remote_docker:
-          docker_layer_caching: true
       - checkout
       - run: make -C deploy checkout
       - run: make -C deploy lint
@@ -23,8 +21,6 @@ jobs:
     environment:
       GOOGLE_PROJECT_ID: planet4-production
     steps:
-      - setup_remote_docker:
-          docker_layer_caching: true
       - checkout
       - run: make -C deploy checkout
       - run: make -C deploy build
@@ -42,8 +38,6 @@ jobs:
     environment:
       GOOGLE_PROJECT_ID: planet4-production
     steps:
-      - setup_remote_docker:
-          docker_layer_caching: true
       - checkout
       - run: activate-gcloud-account.sh
       - run: docker-login.sh
@@ -61,8 +55,6 @@ jobs:
     environment:
       GOOGLE_PROJECT_ID: planet4-production
     steps:
-      - setup_remote_docker:
-          docker_layer_caching: true
       - checkout
       - run: activate-gcloud-account.sh
       - run: docker-login.sh
