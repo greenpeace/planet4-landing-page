@@ -50,7 +50,7 @@ To run accessibility test:
 
     gulp test
 
-Results are available in `pa11y/report.html` (open in your browser) and `pa11y/report.json` (open with `jq`).  
+Results are available in `pa11y/report.html` (open in your browser) and `pa11y/report.json` (open with `jq`).
 Configuration is in `.pa11y`.
 
 ## Deployment
@@ -72,7 +72,7 @@ These in turn do the following:
 ### Notes
 
 - This repository does not have its own helm chart. It uses the helm chart [Planet4 static](https://github.com/greenpeace/planet4-helm-static) which has been created to accommodate all static applications.
-- New commits to the master branch get deployed at the url: https://dev.landing.p4.greenpeace.org
+- New commits to the main branch get deployed at the url: https://www-dev.greenpeace.org
 - New tags get deployed at the url: https://www.greenpeace.org/
 - If you want to confirm the version deployed you can check `/version.txt` on either of the above urls.
 

@@ -55,8 +55,6 @@ section {
   color: black;
   font-family: $roboto;
   box-sizing: border-box;
-  background-color: #f6f4ef;
-  opacity: 0.9;
 
   h1 {
     margin: 0;
@@ -100,8 +98,6 @@ section {
   }
 
   section {
-    background-color: #f6f4ef;
-    opacity: 0.9;
     padding: 40px 60px;
 
     h1 {
@@ -131,6 +127,13 @@ section {
   section {
     position: absolute;
     top: 25%;
+    color: white;
+
+    &.maintenance {
+      color: black;
+      background-color: #f6f4ef;
+      opacity: 0.9;
+    }
 
     h1 {
       font-size: 110px;
