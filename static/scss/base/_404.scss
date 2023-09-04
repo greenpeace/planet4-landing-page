@@ -8,9 +8,12 @@ header {
 
   .top-navigation {
     background: $white;
+    height: 68px;
 
     .site-logo {
       position: relative;
+      padding: 0 24px;
+      margin: auto 0;
 
       .logo {
         width: 160px;
@@ -31,15 +34,33 @@ header {
   }
 }
 
+.btn-primary {
+  background-color: rgb(255, 225, 0);
+  color: black;
+
+  &:visited {
+    background-color: rgb(255, 225, 0);
+    color: black;
+  }
+
+  &:active,
+  &:hover {
+    background-color: #fece00;
+    color: black;
+  }
+}
+
 section {
   padding: 24px;
-  color: $grey-80;
+  color: black;
   font-family: $roboto;
   box-sizing: border-box;
+  background-color: #f6f4ef;
+  opacity: 0.9;
 
   h1 {
     margin: 0;
-    font-size: $font-size-xxxxl;
+    font-size: $font-size-xxxl;
     letter-spacing: 2px;
   }
 
@@ -66,7 +87,7 @@ section {
   header {
     .top-navigation .site-logo {
       text-align: left;
-      padding: 0 24px;
+      padding: 0 60px;
     }
 
     .page-header-background {
@@ -79,8 +100,9 @@ section {
   }
 
   section {
+    background-color: #f6f4ef;
+    opacity: 0.9;
     padding: 40px 60px;
-    max-width: 460px;
 
     h1 {
       font-size: 90px;
@@ -107,9 +129,7 @@ section {
   }
 
   section {
-    color: $white;
     position: absolute;
-    max-width: 590px;
     top: 25%;
 
     h1 {

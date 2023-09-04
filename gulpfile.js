@@ -65,6 +65,14 @@ function replace_static() {
     .pipe(gulp.dest(dest));
 }
 
+function replace_maintenance_static() {
+  const static = fs.readFileSync('STATIC.txt', 'utf8').trim();
+
+  return gulp.src('./maintenance.html')
+    .pipe(replace('{{static}}', static))
+    .pipe(gulp.dest(dest));
+}
+
 function lint_css() {
   return gulp.src(style_scss)
     .pipe(stylelint({
@@ -222,6 +230,6 @@ exports.backstop_reference = backstop_reference;
 exports.backstop_test = backstop_test;
 exports.lint = gulp.parallel(lint_css, lint_js);
 exports.countries = gulp.series(countries, inject);
-exports.build = gulp.series(lint_css, style_sass, style_sass_404, uglify, uglify_404, img, files, replace_static);
+exports.build = gulp.series(lint_css, style_sass, style_sass_404, uglify, uglify_404, img, files, replace_static, replace_maintenance_static);
 exports.test = gulp.series(a11y_test);
 exports.default = gulp.series(watch, serve);
