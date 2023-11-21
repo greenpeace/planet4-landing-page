@@ -35,12 +35,9 @@
     color: var(--grey-900);
     text-decoration: none;
     font-size: 17px;
-    border-bottom: 2px solid transparent;
 
     &:hover {
-      @include shared-link-styles;
-      text-decoration: none !important;
-      border-color: var(--gp-green-500);
+      text-decoration: underline;
     }
   }
 
