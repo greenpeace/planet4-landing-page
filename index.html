@@ -56,28 +56,24 @@
       <img src="static/img/gp-logo.svg" alt="Greenpeace" class="logo">
     </div>
 
-    <div class="heading">
+    <h1 class="heading">
       Together we can change the world
-    </div>
+    </h1>
 
     <div id="loading">
       <div class="three-quarters" id="spinner-people">loading...</div>
     </div>
 
-    <div id="cta" class="cta">
-      <div id="dropdown" class="dropdown">
-        <a class="btn btn-primary" id="selection" href="https://www.greenpeace.org/international/">
-          <span class="truncate">Go to Greenpeace <span id="country-name">International</span></span> <i id="arrow" class="arrow arrow-down"></i>
-        </a>
-        <div id="dropdown-group" class="dropdown-group">
-        </div>
-      </div>
-      <span class="hidden-tall">or</span>
-      <a class="btn btn-secondary hidden-tall" href="#country-list" id="country">Select another country/region</a>
-    </div>
+    <nav id="cta" class="cta">
+      <a class="btn cta-btn" id="selection" href="https://www.greenpeace.org/international/">
+        <span class="truncate">Go to Greenpeace <span id="country-name">International</span></span> <i id="arrow" class="arrow arrow-down"></i>
+      </a>
+      <span class="spacer hidden-tall">or</span>
+      <a class="btn cta-btn" href="#country-list-wrapper" id="country">Select another country/region</a>
+    </nav>
   </header>
 
-  <div id="country-list" class="country-list"></div>
+  <div id="country-list-wrapper" class="country-list-wrapper"></div>
 
   <script src="static/main.js"></script>
 </body>
