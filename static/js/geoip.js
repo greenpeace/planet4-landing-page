@@ -12,19 +12,9 @@ Object.entries(data).forEach(letter => {
         byID('selection').setAttribute('href', country.lang[0].url);
       } else {
         byID('selection').setAttribute('href', '#');
-        byID('arrow').style.display = 'inline-block';
-        byID('selection').classList.add('dropdown-toggle');
-        let items = ``;
-        const lang = country.lang;
-        lang.forEach(item => {
-          items += `<a class="btn btn-secondary dropdown-item" href="${item.url}">${item.name}</a>`;
-        });
-        byID('dropdown-group').innerHTML = items;
-        byID('selection').addEventListener('click', dropdown_toggle);
       }
     }
   });
 });
 
 byID('loading').style.display = 'none';
-byID('cta').classList.add('open');
