@@ -1,5 +1,5 @@
 body {
-  background-color: $white;
+  background-color: var(--white);
 }
 
 header {
@@ -7,12 +7,12 @@ header {
   height: auto;
 
   .top-navigation {
-    background: $white;
+    background: var(--white);
     height: 68px;
 
     .site-logo {
       position: relative;
-      padding: 0 24px;
+      padding: 0 $sp-3;
       margin: auto 0;
 
       .logo {
@@ -25,7 +25,7 @@ header {
   .page-header-background {
     position: relative;
     height: auto;
-    margin-top: 3.375rem;
+    margin-top: $sp-7;
     width: 100%;
 
     .page-header-image {
@@ -34,26 +34,25 @@ header {
   }
 }
 
-.btn-primary {
-  background-color: rgb(255, 225, 0);
-  color: black;
+.cta-btn {
+  background-color: var(--p4-action-yellow-500);
+  color: var(--grey-900);
 
   &:visited {
-    background-color: rgb(255, 225, 0);
-    color: black;
+    background-color: var(--p4-action-yellow-500);
+    color: var(--grey-900);
   }
 
   &:active,
   &:hover {
-    background-color: #fece00;
-    color: black;
+    background-color: var(--p4-action-yellow-600);
+    color: var(--grey-900);
   }
 }
 
 section {
-  padding: 24px;
-  color: black;
-  font-family: $roboto;
+  padding: $sp-3;
+  color: var(--grey-900);
   box-sizing: border-box;
 
   h1 {
@@ -72,12 +71,12 @@ section {
   p {
     font-size: $font-size-xl;
     font-weight: 400;
-    margin: 8px 0;
+    margin: $sp-1 0;
     line-height: 1;
   }
 
   .btn {
-    margin-top: 24px;
+    margin-top: $sp-3;
   }
 }
 
@@ -85,7 +84,7 @@ section {
   header {
     .top-navigation .site-logo {
       text-align: left;
-      padding: 0 60px;
+      padding: 0 $sp-7x;
     }
 
     .page-header-background {
@@ -98,14 +97,14 @@ section {
   }
 
   section {
-    padding: 40px 60px;
+    padding: $sp-5 $sp-7x;
 
     h1 {
       font-size: 90px;
     }
 
     .btn {
-      margin-top: 32px;
+      margin-top: $sp-4;
     }
   }
 }
@@ -127,11 +126,10 @@ section {
   section {
     position: absolute;
     top: 25%;
-    color: white;
+    color: var(--white);
 
     &.maintenance {
-      color: black;
-      background-color: #f6f4ef;
+      color: var(--grey-900);
       opacity: 0.9;
     }
 
@@ -144,7 +142,7 @@ section {
     }
 
     .btn {
-      margin-top: 40px;
+      margin-top: $sp-5;
     }
   }
 }

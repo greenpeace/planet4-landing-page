@@ -1,10 +1,11 @@
-.country-list {
+.country-list-wrapper {
   line-height: 1.5;
   width: 100%;
-  color: #3d3d3d;
-  font-family: $roboto;
+  color: var(--grey-900);
+  font-family: var(--font-family-tertiary);
+  font-size: var(--font-size-m--font-family-tertiary);
   margin: 60px auto;
-  padding: 0 15px;
+  padding: 0 $sp-4;
 
   @include small-and-up {
     max-width: 540px;
@@ -23,23 +24,29 @@
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 22px;
     line-height: 1.5;
-    margin-bottom: 20px;
+    margin-bottom: $sp-2x;
+    text-align: center;
+    font-weight: var(--font-weight-regular);
   }
 
   a {
-    color: #3d3d3d;
-    text-decoration: underline;
+    color: var(--grey-900);
+    text-decoration: none;
+    font-size: 17px;
+    border-bottom: 2px solid transparent;
 
     &:hover {
-      font-weight: 700;
+      @include shared-link-styles;
+      text-decoration: none !important;
+      border-color: var(--gp-green-500);
     }
   }
 
-  > ul {
-    margin-top: 1.5em;
-    padding: 0 0 2em;
+  .countries_list {
+    margin-top: $sp-3;
+    padding: 0 0 $sp-2;
 
     @include medium-and-up {
       column-count: 2;
@@ -50,27 +57,30 @@
     }
   }
 
-  li {
-    position: relative;
+  .country-list-item {
     list-style: none;
-    padding-left: 2em;
     break-inside: avoid;
 
-    ul {
+    .country-group-letter {
+      font-family: var(--font-family-primary);
+      margin: 0 0 $sp-3 0;
+      line-height: 1.5;
+    }
+
+    .countries_sublist {
       break-inside: avoid;
       padding: 0;
-      margin: 0 1em 1.2em 0;
-    }
+      margin: 0 $sp-1 $sp-1x 0;
 
-    li {
-      position: relative;
-      break-inside: avoid;
-    }
-  }
+      .countries_sublist-item {
+        list-style: none;
+        position: relative;
+        break-inside: avoid;
 
-  .country-group-letter {
-    line-height: 1.5;
-    font-weight: bold;
-    color: grey;
+        &:not(:last-child) {
+          margin-bottom: $sp-1;
+        }
+      }
+    }
   }
 }

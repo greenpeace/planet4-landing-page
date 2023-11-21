@@ -9,13 +9,11 @@ html {
 }
 
 body {
-  color: $grey-80;
-  font-family: $lora;
+  font-family: var(--font-family-tertiary);
   font-size: 16px;
-  line-height: 20px;
+  line-height: var(--line-height-s--font-family-tertiary);
   position: relative;
   overflow-y: hidden;
-  background-color: #ecf1f3;
 }
 
 :root {
