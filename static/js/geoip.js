@@ -1,4 +1,4 @@
-/* global data, dropdown_toggle, byID */
+/* global data, byID */
 'use strict';
 
 // IP Geolocation
