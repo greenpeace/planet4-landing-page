@@ -4,8 +4,9 @@
   color: var(--grey-900);
   font-family: var(--font-family-tertiary);
   font-size: var(--font-size-m--font-family-tertiary);
-  margin: 60px auto;
+  margin: $sp-7 auto;
   padding: 0 $sp-4;
+  box-sizing: border-box;
 
   @include small-and-up {
     max-width: 540px;
@@ -26,7 +27,7 @@
   h2 {
     font-size: 22px;
     line-height: 1.5;
-    margin-bottom: $sp-2x;
+    margin: 0 0 $sp-6 0;
     text-align: center;
     font-weight: var(--font-weight-regular);
   }
@@ -43,7 +44,7 @@
 
   .countries_list {
     margin-top: $sp-3;
-    padding: 0 0 $sp-2;
+    padding: 0;
 
     @include medium-and-up {
       column-count: 2;
@@ -60,8 +61,10 @@
 
     .country-group-letter {
       font-family: var(--font-family-primary);
-      margin: 0 0 $sp-3 0;
-      line-height: 1.5;
+      margin: 0 0 $sp-1 0;
+      font-size: var(--font-size-l--font-family-primary);
+      line-height: var(--line-height-l--font-family-primary);
+      font-weight: var(--font-weight-regular);
     }
 
     .countries_sublist {
@@ -78,6 +81,10 @@
           margin-bottom: $sp-1;
         }
       }
+    }
+
+    &:not(:last-child) {
+      margin-bottom: $sp-4;
     }
   }
 }
