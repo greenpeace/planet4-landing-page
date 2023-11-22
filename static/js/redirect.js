@@ -28,9 +28,8 @@ function redirectFromCookie(cookie, location) {
   const nroName = urls[urlList.indexOf(nroUrl)][1];
 
   // Redirect with spinner and link
-  byID('cta').innerHTML = `<div id="dropdown" class="dropdown">
-    <a id="selection" class="btn btn-primary solo" href="${nroUrl}">Redirecting to <span class="nro-name">Greenpeace ${nroName}</span></a>
-    </div>`;
+  byID('cta').innerHTML = `<a id="selection" class="btn cta-btn" href="${nroUrl}">
+    Redirecting to <span class="nro-name">Greenpeace ${nroName}</span></a>`;
   try {
     window.location.replace(nroUrl);
   } catch (e) {

@@ -43,7 +43,6 @@ const urls_json = 'urls.json';
 const js_array = [
   dest + api,
   'static/js/app.js',
-  'static/js/dropdown.js',
   'static/js/geoip.js',
   'static/js/country_list.js',
   'static/js/redirect.js'

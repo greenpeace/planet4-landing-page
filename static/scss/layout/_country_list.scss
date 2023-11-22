@@ -1,10 +1,12 @@
-.country-list {
+.country-list-wrapper {
   line-height: 1.5;
   width: 100%;
-  color: #3d3d3d;
-  font-family: $roboto;
-  margin: 60px auto;
-  padding: 0 15px;
+  color: var(--grey-900);
+  font-family: var(--font-family-tertiary);
+  font-size: var(--font-size-m--font-family-tertiary);
+  margin: $sp-7 auto;
+  padding: 0 $sp-4;
+  box-sizing: border-box;
 
   @include small-and-up {
     max-width: 540px;
@@ -23,23 +25,26 @@
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 22px;
     line-height: 1.5;
-    margin-bottom: 20px;
+    margin: 0 0 $sp-6 0;
+    text-align: center;
+    font-weight: var(--font-weight-regular);
   }
 
   a {
-    color: #3d3d3d;
-    text-decoration: underline;
+    color: var(--grey-900);
+    text-decoration: none;
+    font-size: 17px;
 
     &:hover {
-      font-weight: 700;
+      text-decoration: underline;
     }
   }
 
-  > ul {
-    margin-top: 1.5em;
-    padding: 0 0 2em;
+  .countries_list {
+    margin-top: $sp-3;
+    padding: 0;
 
     @include medium-and-up {
       column-count: 2;
@@ -50,27 +55,36 @@
     }
   }
 
-  li {
-    position: relative;
+  .country-list-item {
     list-style: none;
-    padding-left: 2em;
     break-inside: avoid;
 
-    ul {
+    .country-group-letter {
+      font-family: var(--font-family-primary);
+      margin: 0 0 $sp-1 0;
+      font-size: var(--font-size-l--font-family-primary);
+      line-height: var(--line-height-l--font-family-primary);
+      font-weight: var(--font-weight-regular);
+    }
+
+    .countries_sublist {
       break-inside: avoid;
       padding: 0;
-      margin: 0 1em 1.2em 0;
+      margin: 0 $sp-1 $sp-1x 0;
+
+      .countries_sublist-item {
+        list-style: none;
+        position: relative;
+        break-inside: avoid;
+
+        &:not(:last-child) {
+          margin-bottom: $sp-1;
+        }
+      }
     }
 
-    li {
-      position: relative;
-      break-inside: avoid;
+    &:not(:last-child) {
+      margin-bottom: $sp-4;
     }
-  }
-
-  .country-group-letter {
-    line-height: 1.5;
-    font-weight: bold;
-    color: grey;
   }
 }
