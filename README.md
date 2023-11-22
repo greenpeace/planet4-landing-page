@@ -12,6 +12,10 @@ Use [npm](https://www.npmjs.com/) to install the necessary gulp:
 
     npm -g install gulp-cli
 
+Use Node 16:
+
+    nvm use 16
+
 Install all required packages:
 
     npm install
