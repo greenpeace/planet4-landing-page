@@ -38,7 +38,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="shortcut icon" type="image/ico" href="favicon.ico">
 
-  <link rel='stylesheet' href='{{static}}404.css' type='text/css' media='all'>
+  <link rel='stylesheet' href='static/404.css' type='text/css' media='all'>
+
+  <base href="{{static}}">
 </head>
 
 <body>
@@ -50,12 +52,12 @@
   <header>
     <nav id="header" class="top-navigation navbar">
       <a class="site-logo" href="https://www.greenpeace.org/global/">
-        <img src="{{static}}img/gp-logo.svg" alt="Greenpeace" class="logo">
+        <img src="static/img/gp-logo.svg" alt="Greenpeace" class="logo">
       </a>
     </nav>
 
     <div class="page-header-background">
-      <img src="{{static}}img/404.jpg" srcset="{{static}}img/404.jpg 1200w, {{static}}img/404-992w.jpg 992w, {{static}}img/404-768w.jpg 768w, {{static}}img/404-575w.jpg 575w, {{static}}img/404-320w.jpg 320w" class="page-header-image">
+      <img src="img/404.jpg" srcset="static/img/404.jpg 1200w, static/img/404-992w.jpg 992w, static/img/404-768w.jpg 768w, static/img/404-575w.jpg 575w, static/img/404-320w.jpg 320w" class="page-header-image">
     </div>
   </header>
 
@@ -66,6 +68,6 @@
     <a class="btn cta-btn" href="https://www.greenpeace.org/global/" data-l10n-key="cta">Go to homepage</a>
   </section>
 
-  <script src="{{static}}404.js"></script>
+  <script src="static/404.js"></script>
 </body>
 </html>

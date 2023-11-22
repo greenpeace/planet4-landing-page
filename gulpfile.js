@@ -59,6 +59,14 @@ const style_404 = 'static/scss/404.scss';
 function replace_static() {
   const static = fs.readFileSync('STATIC.txt', 'utf8').trim();
 
+  return gulp.src('./index.html')
+    .pipe(replace('{{static}}', static))
+    .pipe(gulp.dest(dest));
+}
+
+function replace_static_404() {
+  const static = fs.readFileSync('STATIC.txt', 'utf8').trim();
+
   return gulp.src('./404.html')
     .pipe(replace('{{static}}', static))
     .pipe(gulp.dest(dest));
@@ -221,6 +229,6 @@ exports.backstop_reference = backstop_reference;
 exports.backstop_test = backstop_test;
 exports.lint = gulp.parallel(lint_css, lint_js);
 exports.countries = gulp.series(countries, inject);
-exports.build = gulp.series(lint_css, style_sass, style_sass_404, uglify, uglify_404, img, files, replace_static);
+exports.build = gulp.series(lint_css, style_sass, style_sass_404, uglify, uglify_404, img, files, replace_static, replace_static_404);
 exports.test = gulp.series(a11y_test);
 exports.default = gulp.series(watch, serve);
