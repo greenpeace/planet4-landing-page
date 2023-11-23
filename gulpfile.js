@@ -60,7 +60,7 @@ function replace_static() {
   const static = fs.readFileSync('STATIC.txt', 'utf8').trim();
 
   return gulp.src('./index.html')
-    .pipe(replace('{{static}}', static))
+    .pipe(replace('/static/', static))
     .pipe(gulp.dest(dest));
 }
 
@@ -68,7 +68,7 @@ function replace_static_404() {
   const static = fs.readFileSync('STATIC.txt', 'utf8').trim();
 
   return gulp.src('./404.html')
-    .pipe(replace('{{static}}', static))
+    .pipe(replace('/static/', static))
     .pipe(gulp.dest(dest));
 }
 

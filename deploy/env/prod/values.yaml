@@ -5,7 +5,7 @@ api: >
   https://www.greenpeace.org/international/wp-content/
   themes/planet4-master-theme/templates/countries.json
 static: >
-  https://www.greenpeace.org/global/
+  https://www.greenpeace.org/global/static/
 nginxingress:
   hosts:
     - name: www.greenpeace.org
