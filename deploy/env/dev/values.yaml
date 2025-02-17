@@ -3,7 +3,7 @@ hostname: landing-dev.greenpeace.org
 environment: development
 api: >
   https://www-stage.greenpeace.org/international/
-  wp-content/themes/planet4-master-theme/templates/countries.json
+  wp-content/themes/planet4-master-theme/templates/countries.json?cache=no
 static: >
   https://www-dev.greenpeace.org/global/static/
 nginxingress:
