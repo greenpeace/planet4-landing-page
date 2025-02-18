@@ -3,7 +3,7 @@ hostname: landing.greenpeace.org
 environment: production
 api: >
   https://www.greenpeace.org/international/wp-content/
-  themes/planet4-master-theme/templates/countries.json?cache=no
+  themes/planet4-master-theme/templates/countries.json
 static: >
   https://www.greenpeace.org/global/static/
 nginxingress:
