@@ -16,6 +16,29 @@ body {
   overflow-y: hidden;
 }
 
+.skip-links {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style-type: none;
+  font-family: var(--font-family-tertiary);
+
+  a {
+    font-size: var(--font-size-m--font-family-tertiary);
+    position: absolute;
+    color: var(--link--color);
+    top: -50px;
+    left: 15px;
+    z-index: 100;
+
+    &:focus {
+      top: 60px;
+      background-color: white;
+      border-radius: 4px;
+      padding: 5px 10px;
+    }
+  }
+}
+
 :root {
   --header-height: 552px;
 
