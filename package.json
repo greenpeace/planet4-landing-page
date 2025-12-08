@@ -27,7 +27,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^2.6.5",
-    "gulp-stylelint": "^9.0.0",
+    "gulp-stylelint": "^13.0.0",
     "gulp-template": "^5.0.0",
     "gulp-uglify-es": "^3.0.0",
     "postcss": "^8.4.21",
