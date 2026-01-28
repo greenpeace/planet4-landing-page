@@ -8,8 +8,8 @@ Object.entries(data).forEach(letter => {
   if ( '0' === letter[0] ) {
     international_html += `<a class="international" href="${letter[1][0].url}">${letter[1][0].name}</a>`;
   } else {
-    sublist_html += `<li class="country-list-item"><h3 class="country-group-letter">${letter[0]}</h3>
-      <ul class="countries_sublist">`;
+    sublist_html += `<li class="country-list-item"><span class="country-group-letter">${letter[0]}</span>
+      <ul class="countries_sublist" aria-label="Sites starting with the letter ${letter[0]}.">`;
     letter[1].forEach(country => {
       const lang = country.lang;
       lang.forEach(item => {
