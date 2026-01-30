@@ -14,7 +14,7 @@
     "@babel/preset-env": "^7.4.5",
     "@greenpeace/dashdash": "^1.2.1",
     "autoprefixer": "^10.4.13",
-    "eslint": "^5.16.0",
+    "eslint": "^9.26.0",
     "fs": "0.0.1-security",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
