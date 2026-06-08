@@ -1,6 +1,6 @@
 ---
 image:
-  repository: greenpeaceinternational/p4-landing-page
+  repository: docker.io/greenpeaceinternational/p4-landing-page
 openresty:
   custom_404: "/404.html"
   geoip:
