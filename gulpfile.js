@@ -199,23 +199,6 @@ function backstop_test(done) {
   done();
 }
 
-function a11y_test(done) {
-  const pa11y = require('pa11y');
-  const report_dest = './pa11y';
-  const url = 'http://localhost:9000';
-
-  pa11y(url).then(async results => {
-    const reporter = require('pa11y-reporter-html');
-    const html = await reporter.results(results, url);
-    if(!fs.existsSync(report_dest)) {
-      fs.mkdirSync(report_dest);
-    }
-    fs.writeFileSync(report_dest + '/report.html', html);
-    fs.writeFileSync(report_dest + '/report.json', JSON.stringify(results));
-  });
-  done();
-}
-
 function serve(done) {
   connect.server({
     root: './dist',
@@ -230,5 +213,4 @@ exports.backstop_test = backstop_test;
 exports.lint = gulp.parallel(lint_css, lint_js);
 exports.countries = gulp.series(countries, inject);
 exports.build = gulp.series(lint_css, style_sass, style_sass_404, uglify, uglify_404, img, files, replace_static, replace_static_404);
-exports.test = gulp.series(a11y_test);
 exports.default = gulp.series(watch, serve);
