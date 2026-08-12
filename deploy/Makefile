@@ -77,8 +77,16 @@ build: lint docker/public
 
 .PHONY: test-a11y
 test-a11y: install-pa11y
-	cd docker/source ; gulp & sleep 3
-	cd docker/source ; gulp test
+	cd docker/source ; \
+		gulp & server_pid=$$!; \
+		trap 'kill $$server_pid 2>/dev/null || true' EXIT; \
+		attempt=0; \
+		until wget --spider --quiet http://localhost:9000; do \
+			attempt=$$((attempt + 1)); \
+			if [ $$attempt -ge 30 ]; then echo "Server did not become ready within 30 seconds"; exit 1; fi; \
+			sleep 1; \
+		done; \
+		gulp test
 
 .PHONY: install-pa11y
 install-pa11y: install-puppeteer-deps

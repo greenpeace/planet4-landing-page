@@ -199,21 +199,29 @@ function backstop_test(done) {
   done();
 }
 
-function a11y_test(done) {
+function a11y_test() {
   const pa11y = require('pa11y');
   const report_dest = './pa11y';
   const url = 'http://localhost:9000';
 
-  pa11y(url).then(async results => {
+  return pa11y(url, {
+    timeout: 60000,
+    chromeLaunchConfig: {
+      ignoreHTTPSErrors: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    },
+    includeWarnings: true,
+    includeNotices: true
+  }).then(results => {
     const reporter = require('pa11y-reporter-html');
-    const html = await reporter.results(results, url);
-    if(!fs.existsSync(report_dest)) {
-      fs.mkdirSync(report_dest);
-    }
-    fs.writeFileSync(report_dest + '/report.html', html);
-    fs.writeFileSync(report_dest + '/report.json', JSON.stringify(results));
+    return reporter.results(results, url).then(html => {
+      if(!fs.existsSync(report_dest)) {
+        fs.mkdirSync(report_dest);
+      }
+      fs.writeFileSync(report_dest + '/report.html', html);
+      fs.writeFileSync(report_dest + '/report.json', JSON.stringify(results));
+    });
   });
-  done();
 }
 
 function serve(done) {
