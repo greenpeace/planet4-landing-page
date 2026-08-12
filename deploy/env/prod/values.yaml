@@ -1,5 +1,6 @@
 ---
 hostname: landing.greenpeace.org
+hostpath: global(/|$)(.*)
 environment: production
 api: >
   https://www.greenpeace.org/international/wp-content/
@@ -9,8 +10,6 @@ static: >
 nginxingress:
   hosts:
     - name: www.greenpeace.org
-      path: global(/|$)(.*)
-    - name: landing.greenpeace.org
       path: global(/|$)(.*)
     - name: landing-stage.greenpeace.org
       path: global(/|$)(.*)
