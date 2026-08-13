@@ -98,7 +98,7 @@ echo-build:
 dev: lint dev-config
 	helm3 repo add p4 https://planet4-helm-charts.storage.googleapis.com && \
 	helm3 repo update
-	helm3 upgrade --install --force-replace --wait --timeout 300s $(RELEASE_NAME) $(CHART_NAME) \
+	helm3 upgrade --install --force --wait --timeout 300s $(RELEASE_NAME) $(CHART_NAME) \
 		--namespace=$(NAMESPACE) \
 		--set image.tag=$(BUILD_NUM) \
 		--values values.yaml \
