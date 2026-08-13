@@ -50,13 +50,6 @@ At any time you can create test screenshots:
 
 Once this is finished a report will be launched in your browser in order to inspect the visual diff.
 
-To run accessibility test:
-
-    gulp test
-
-Results are available in `pa11y/report.html` (open in your browser) and `pa11y/report.json` (open with `jq`).
-Configuration is in `.pa11y`.
-
 ## Deployment
 
 The build and deployment is happening automatically whenever:

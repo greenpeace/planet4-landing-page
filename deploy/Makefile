@@ -29,11 +29,6 @@ BRANCH_NAME ?= $(shell git rev-parse --abbrev-ref HEAD | sed 's/$(SED_MATCH)/-/g
 BUILD_TAG ?= $(shell git tag -l --points-at HEAD | tail -n1 | sed 's/$(SED_MATCH)/-/g')
 endif
 
-# A11y test config
-PA11Y_DIR = pa11y
-PA11Y_CONF = .pa11y
-
-
 # If BUILD_TAG is blank there's no tag on this commit
 ifeq ($(strip $(BUILD_TAG)),)
 # Default to branch name
@@ -74,15 +69,6 @@ docker/public:
 	cp -R docker/source/dist docker/public
 
 build: lint docker/public
-
-.PHONY: test-a11y
-test-a11y: install-pa11y
-	cd docker/source ; gulp & sleep 3
-	cd docker/source ; gulp test
-
-.PHONY: install-pa11y
-install-pa11y: install-puppeteer-deps
-	npm install pa11y-ci pa11y-ci-reporter-html
 
 .PHONY: install-puppeteer-deps
 install-puppeteer-deps:
