@@ -34,8 +34,7 @@ const api = 'countries.js';
 const dest = './dist/';
 const files_array = [
   'index.html',
-  'version.txt',
-  'favicon.ico'
+  'version.txt'
 ];
 const img_array = 'static/img/*';
 const countries_json = 'static/scss/master-theme/templates/countries.json';
