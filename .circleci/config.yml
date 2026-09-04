@@ -1,9 +1,15 @@
 ---
 version: 2.1
 
+docker_auth: &docker_auth
+  username: $DOCKERHUB_USERNAME
+  password: $DOCKERHUB_PASSWORD
+
 defaults: &defaults
   docker:
     - image: greenpeaceinternational/circleci-base:latest
+      auth:
+        <<: *docker_auth
   working_directory: /home/circleci/app
 
 jobs:
@@ -49,8 +55,25 @@ jobs:
           command: make -C deploy prod
           no_output_timeout: 30m
 
+  update-geoip:
+    <<: *defaults
+    environment:
+      GOOGLE_PROJECT_ID: planet-4-151612
+    steps:
+      - checkout
+      - run:
+          name: Activate gcloud
+          command: activate-gcloud-account.sh
+      - run:
+          name: Install geoipupdate
+          command: |
+            apt-get update
+            apt-get install geoipupdate
+      - run:
+          name: Update GeoIP database
+          command: ./bin/geoipupdate.sh
+
 workflows:
-  version: 2
   branch:
     jobs:
       - lint:
@@ -77,3 +100,16 @@ workflows:
               ignore: /.*/
             tags:
               only: /.*/
+
+  weekly-geoip:
+    triggers:
+      - schedule:
+          # Weekly 0900UTC Friday
+          cron: "0 9 * * 0"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - update-geoip:
+          context: org-global
