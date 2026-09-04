@@ -104,8 +104,8 @@ workflows:
   weekly-geoip:
     triggers:
       - schedule:
-          # Weekly 0900UTC Friday
-          cron: "0 9 * * 0"
+          # Weekly 1100UTC Friday
+          cron: "0 11 * * 5"
           filters:
             branches:
               only:
