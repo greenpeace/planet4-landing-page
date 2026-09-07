@@ -67,11 +67,17 @@ jobs:
       - run:
           name: Install geoipupdate
           command: |
-            apt-get update
-            apt-get install geoipupdate
+            sudo apt-get update
+            sudo apt-get install geoipupdate
+      - run:
+          name: Prepare GeoIP configuration
+          command: |
+            export GEOIP_ACCOUNTID="$(echo "$GEOIP_ACCOUNTID" | base64 --decode)"
+            export GEOIP_LICENSE="$(echo "$GEOIP_LICENSE" | base64 --decode)"
+            envsubst '$GEOIP_ACCOUNTID $GEOIP_LICENSE' < ./app/templates/etc/GeoIP.conf.tmpl | sudo tee /etc/GeoIP.conf > /dev/null
       - run:
           name: Update GeoIP database
-          command: ./bin/geoipupdate.sh
+          command: ./app/bin/geoipupdate.sh
 
 workflows:
   branch:
@@ -104,8 +110,8 @@ workflows:
   weekly-geoip:
     triggers:
       - schedule:
-          # Weekly 1100UTC Friday
-          cron: "0 11 * * 5"
+          # Weekly 1100UTC Wed
+          cron: "0 11 * * 3"
           filters:
             branches:
               only:
