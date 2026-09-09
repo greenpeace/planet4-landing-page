@@ -96,7 +96,9 @@ workflows:
           context: org-global
           filters:
             branches:
-              only: main
+              only:
+                - main
+                - hostpath
   tag:
     jobs:
       - deploy-tag:
