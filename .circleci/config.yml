@@ -74,7 +74,7 @@ jobs:
           command: |
             export GEOIP_ACCOUNTID="$(echo "$GEOIP_ACCOUNTID" | base64 --decode)"
             export GEOIP_LICENSE="$(echo "$GEOIP_LICENSE" | base64 --decode)"
-            envsubst '$GEOIP_ACCOUNTID $GEOIP_LICENSE' < ./app/templates/etc/GeoIP.conf.tmpl | sudo tee /etc/GeoIP.conf > /dev/null
+            envsubst '$GEOIP_ACCOUNTID $GEOIP_LICENSE' < ./templates/etc/GeoIP.conf.tmpl | sudo tee /etc/GeoIP.conf > /dev/null
       - run:
           name: Update GeoIP database
           command: ./app/bin/geoipupdate.sh
@@ -110,8 +110,8 @@ workflows:
   weekly-geoip:
     triggers:
       - schedule:
-          # Weekly 1100UTC Wed
-          cron: "0 11 * * 3"
+          # Weekly 1400UTC Wed
+          cron: "0 14 * * 3"
           filters:
             branches:
               only:
