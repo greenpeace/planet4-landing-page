@@ -53,6 +53,9 @@ commit:
 	echo $${CIRCLE_SHA1:0:8} > $(APP_SOURCE)/version.txt
 	yq -r .api /home/circleci/app/deploy/env/dev/values.yaml | tr -d '\n\ ' > $(APP_SOURCE)/API.txt
 	yq -r .static /home/circleci/app/deploy/env/dev/values.yaml | tr -d '\n\ ' > $(APP_SOURCE)/STATIC.txt
+	grep -q '<meta name="robots" content="noindex, follow">' $(APP_SOURCE)/index.html || \
+		awk '/<meta name="description"/ { print; print "  <meta name=\"robots\" content=\"noindex, follow\">"; next } { print }' \
+			$(APP_SOURCE)/index.html > $(APP_SOURCE)/index.html.tmp && mv $(APP_SOURCE)/index.html.tmp $(APP_SOURCE)/index.html
 
 tag:
 	echo ${CIRCLE_TAG} > $(APP_SOURCE)/version.txt
