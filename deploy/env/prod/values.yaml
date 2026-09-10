@@ -1,6 +1,5 @@
 ---
 hostname: landing.greenpeace.org
-hostpath: global(/|$)(.*)
 environment: production
 api: >
   https://www.greenpeace.org/international/wp-content/
