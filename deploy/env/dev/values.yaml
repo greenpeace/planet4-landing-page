@@ -1,6 +1,5 @@
 ---
 hostname: landing-dev.greenpeace.org
-hostpath: global(/|$)(.*)
 environment: development
 api: >
   https://www-stage.greenpeace.org/international/
